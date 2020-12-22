@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2020-11-17 13:37:06
+-- Generation Time: 2020-12-22 13:52:53
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -25,6 +25,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `boss_cominfo`
+--
+
+CREATE TABLE `boss_cominfo` (
+  `workComId` int(8) NOT NULL,
+  `workComName` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `workComPerson` varchar(30) COLLATE utf8mb4_bin NOT NULL,
+  `workComAllName` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `workComScale` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `workComDate` date NOT NULL,
+  `workComCate` varchar(25) COLLATE utf8mb4_bin NOT NULL,
+  `workComTag` varchar(150) COLLATE utf8mb4_bin NOT NULL,
+  `workComCity` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `workComArea` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `workComIntro` varchar(400) COLLATE utf8mb4_bin NOT NULL,
+  `workComCap` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 转存表中的数据 `boss_cominfo`
+--
+
+INSERT INTO `boss_cominfo` (`workComId`, `workComName`, `workComPerson`, `workComAllName`, `workComScale`, `workComDate`, `workComCate`, `workComTag`, `workComCity`, `workComArea`, `workComIntro`, `workComCap`) VALUES
+(1408, '白嫖科技', '杰克马', '南京市白嫖科技发展有限公司', '0-9', '2010-01-01', '互联网/科技', '朝八晚六，收费零食，自费团建', '南京市', '鼓楼区', '这个公司很懒，什么都没有留下', 1);
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `boss_user`
 --
 
@@ -39,9 +67,88 @@ CREATE TABLE `boss_user` (
   `isvip` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `boss_workcategory`
+--
+
+CREATE TABLE `boss_workcategory` (
+  `workCateId` int(11) NOT NULL,
+  `cateName` varchar(25) COLLATE utf8mb4_bin NOT NULL,
+  `cate2Name` varchar(25) COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 转存表中的数据 `boss_workcategory`
+--
+
+INSERT INTO `boss_workcategory` (`workCateId`, `cateName`, `cate2Name`) VALUES
+(100, '技术', '技术'),
+(101, '技术', 'Java工程师'),
+(102, '技术', '前端工程师'),
+(103, '技术', 'PHP工程师'),
+(104, '技术', '算法工程师'),
+(105, '技术', '测试工程师'),
+(106, '技术', '全栈工程师'),
+(200, '产品', '产品'),
+(201, '产品', '产品经理'),
+(202, '产品', '游戏策划'),
+(203, '产品', '电商产品经理'),
+(204, '产品', '产品专员'),
+(205, '产品', '产品VP'),
+(300, '设计', '设计'),
+(301, '设计', 'UI设计师'),
+(302, '设计', '平面设计'),
+(303, '设计', '室内设计'),
+(304, '设计', '视觉设计'),
+(305, '设计', '工业设计'),
+(400, '运营', '运营'),
+(401, '运营', '电商运营'),
+(402, '运营', '新媒体运营'),
+(403, '运营', '客服专员'),
+(404, '运营', '网站编辑'),
+(405, '运营', '产品运营'),
+(500, '市场', '市场'),
+(501, '市场', '市场营销'),
+(502, '市场', '网络营销'),
+(503, '市场', '品牌公关'),
+(504, '市场', '广告策划'),
+(505, '市场', 'SEO/SEM'),
+(600, '其他', '其他');
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `boss_workface`
+--
+
+CREATE TABLE `boss_workface` (
+  `workId` int(8) NOT NULL,
+  `workTitle` varchar(200) COLLATE utf8mb4_bin NOT NULL,
+  `workSalary` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `workComId` int(8) NOT NULL,
+  `workTag` varchar(200) COLLATE utf8mb4_bin NOT NULL,
+  `workPublisher` varchar(100) COLLATE utf8mb4_bin NOT NULL,
+  `workCateId` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 转存表中的数据 `boss_workface`
+--
+
+INSERT INTO `boss_workface` (`workId`, `workTitle`, `workSalary`, `workComId`, `workTag`, `workPublisher`, `workCateId`) VALUES
+(10001, '全栈工程师', '1-2K', 1408, '3-5年，硕士研究生，Vue，Java', '刘先生·人事', 106);
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `boss_cominfo`
+--
+ALTER TABLE `boss_cominfo`
+  ADD PRIMARY KEY (`workComId`);
 
 --
 -- Indexes for table `boss_user`
@@ -50,14 +157,38 @@ ALTER TABLE `boss_user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `boss_workcategory`
+--
+ALTER TABLE `boss_workcategory`
+  ADD PRIMARY KEY (`workCateId`);
+
+--
+-- Indexes for table `boss_workface`
+--
+ALTER TABLE `boss_workface`
+  ADD PRIMARY KEY (`workId`);
+
+--
 -- 在导出的表使用AUTO_INCREMENT
 --
+
+--
+-- 使用表AUTO_INCREMENT `boss_cominfo`
+--
+ALTER TABLE `boss_cominfo`
+  MODIFY `workComId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1409;
 
 --
 -- 使用表AUTO_INCREMENT `boss_user`
 --
 ALTER TABLE `boss_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- 使用表AUTO_INCREMENT `boss_workface`
+--
+ALTER TABLE `boss_workface`
+  MODIFY `workId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
