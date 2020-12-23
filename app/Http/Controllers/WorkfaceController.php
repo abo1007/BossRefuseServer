@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use function foo\func;
 use Illuminate\Http\Request;
 use App\api\Workface;
+use Illuminate\Support\Facades\DB;
 
 class WorkfaceController extends BaseController
 {
@@ -76,5 +77,33 @@ class WorkfaceController extends BaseController
     public function destroy($id)
     {
         //
+
+    }
+
+    /**
+     * 分类数据
+     * @param int $cateid
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function classify($cateid){
+
+        $workfaces = Workface::where("workCateId","like",$cateid."%")->join('cominfo','workface.workComId','cominfo.workComId')->
+        select('workface.*','cominfo.workComId','cominfo.workComCity','cominfo.workComArea','cominfo.workComName','cominfo.workComScale')->get()->toArray();
+
+        return $this->create($workfaces, "数据获取成功", 200);
+    }
+
+    /**
+     * 细分分类数据
+     * @param int $cateid
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+
+    public function subclassify($cateid){
+
+        $workfaces = Workface::where("workCateId",$cateid)->join('cominfo','workface.workComId','cominfo.workComId')->
+        select('workface.*','cominfo.workComId','cominfo.workComCity','cominfo.workComArea','cominfo.workComName','cominfo.workComScale')->get()->toArray();
+
+        return $this->create($workfaces, "数据获取成功", 200);
     }
 }

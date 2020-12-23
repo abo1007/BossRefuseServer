@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2020-12-22 13:52:53
+-- Generation Time: 2020-12-23 11:46:00
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -138,7 +138,8 @@ CREATE TABLE `boss_workface` (
 --
 
 INSERT INTO `boss_workface` (`workId`, `workTitle`, `workSalary`, `workComId`, `workTag`, `workPublisher`, `workCateId`) VALUES
-(10001, '全栈工程师', '1-2K', 1408, '3-5年，硕士研究生，Vue，Java', '刘先生·人事', 106);
+(10001, '全栈工程师', '1-2K', 1408, '3-5年，硕士研究生，Vue，Java', '刘先生·人事', 106),
+(10002, '产品经理', '0.5-1.5K', 1408, '1-3年，本科', '刘先生·人事', 201);
 
 --
 -- Indexes for dumped tables
@@ -188,7 +189,7 @@ ALTER TABLE `boss_user`
 -- 使用表AUTO_INCREMENT `boss_workface`
 --
 ALTER TABLE `boss_workface`
-  MODIFY `workId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
+  MODIFY `workId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10003;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
