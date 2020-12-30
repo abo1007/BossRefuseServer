@@ -25,4 +25,8 @@ Route::get('workface/cate/{cateid}','WorkfaceController@classify') -> name('work
 Route::get('workface/subcate/{cateid}','WorkfaceController@subclassify') -> name('workface.subcate');
 
 Route::apiResource("user",'UserController');
+// 登录验证
+Route::post('user/login','UserController@login') -> name('user.login');
+// 免登录
+Route::post('user/loginfree','UserController@loginFree') -> name('user.loginfree');
 
