@@ -121,4 +121,26 @@ class UserController extends BaseController
         }
         return $this->create([], "拒绝免登录", 1011);
     }
+
+    /**
+     * 修改密码功能
+     * @param Request $req
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function updatePass(Request $req){
+
+        return $this->create([], "未开放此API", 400);
+
+    }
+
+    /**
+     * 注册用户功能
+     * @param Request $req
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function registerUser(Request $req){
+
+        return $this->create([], "未开放此API", 400);
+
+    }
 }

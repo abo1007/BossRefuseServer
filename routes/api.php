@@ -29,4 +29,7 @@ Route::apiResource("user",'UserController');
 Route::post('user/login','UserController@login') -> name('user.login');
 // 免登录
 Route::post('user/loginfree','UserController@loginFree') -> name('user.loginfree');
-
+// 修改密码
+Route::post('user/updatepass','UserController@updatePass') -> name('user.updatepass');
+// 注册用户
+Route::post('user/reguser','UserController@registerUser') -> name('user.reguser');
