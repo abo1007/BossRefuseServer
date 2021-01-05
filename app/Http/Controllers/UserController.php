@@ -17,7 +17,7 @@ class UserController extends BaseController
     public function index()
     {
         //
-        return $this->create([], "未开放此API", 400);
+        return $this->create([], "未开放此API", 700);
     }
 
     /**
@@ -63,7 +63,7 @@ class UserController extends BaseController
     public function destroy($id)
     {
         //
-        return $this->create([], "未开放此API", 400);
+        return $this->create([], "未开放此API", 700);
     }
 
     /**
