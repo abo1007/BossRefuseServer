@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2020-12-23 11:46:00
+-- Generation Time: 2021-01-09 14:49:03
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -21,6 +21,34 @@ SET time_zone = "+00:00";
 --
 -- Database: `boss`
 --
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `boss_candidates`
+--
+
+CREATE TABLE `boss_candidates` (
+  `candId` int(10) NOT NULL,
+  `name` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `sex` int(1) NOT NULL,
+  `age` int(3) NOT NULL,
+  `edu` varchar(20) COLLATE utf8mb4_bin NOT NULL,
+  `school` varchar(50) COLLATE utf8mb4_bin NOT NULL,
+  `workExper` varchar(300) COLLATE utf8mb4_bin NOT NULL,
+  `projectExper` varchar(500) COLLATE utf8mb4_bin NOT NULL,
+  `certificate` varchar(300) COLLATE utf8mb4_bin NOT NULL,
+  `honor` varchar(300) COLLATE utf8mb4_bin NOT NULL,
+  `expect` varchar(300) COLLATE utf8mb4_bin NOT NULL,
+  `intro` varchar(300) COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 转存表中的数据 `boss_candidates`
+--
+
+INSERT INTO `boss_candidates` (`candId`, `name`, `sex`, `age`, `edu`, `school`, `workExper`, `projectExper`, `certificate`, `honor`, `expect`, `intro`) VALUES
+(10000, '杨波', 0, 24, '不详', '清华大学西伯利亚分校农学院', '无', '无', '无', '一带一路暨金砖国家技能发展与技术大赛之网站设计与开发大赛三等奖', '4-6k，前端工程师，天津', '我是开发者');
 
 -- --------------------------------------------------------
 
@@ -53,6 +81,28 @@ INSERT INTO `boss_cominfo` (`workComId`, `workComName`, `workComPerson`, `workCo
 -- --------------------------------------------------------
 
 --
+-- 表的结构 `boss_offer`
+--
+
+CREATE TABLE `boss_offer` (
+  `workOfferId` int(11) NOT NULL,
+  `workOfferType` int(1) NOT NULL,
+  `userId` int(11) NOT NULL,
+  `workComId` int(11) NOT NULL,
+  `candId` int(11) NOT NULL,
+  `workId` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 转存表中的数据 `boss_offer`
+--
+
+INSERT INTO `boss_offer` (`workOfferId`, `workOfferType`, `userId`, `workComId`, `candId`, `workId`) VALUES
+(10000, 1, 10001, 1408, 10000, 10001);
+
+-- --------------------------------------------------------
+
+--
 -- 表的结构 `boss_user`
 --
 
@@ -64,8 +114,17 @@ CREATE TABLE `boss_user` (
   `regtime` datetime NOT NULL,
   `phonenum` varchar(12) COLLATE utf8mb4_bin NOT NULL,
   `nickname` varchar(200) COLLATE utf8mb4_bin NOT NULL,
-  `isvip` int(1) NOT NULL
+  `isvip` int(1) NOT NULL DEFAULT '0',
+  `isCom` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 转存表中的数据 `boss_user`
+--
+
+INSERT INTO `boss_user` (`id`, `username`, `password`, `sex`, `regtime`, `phonenum`, `nickname`, `isvip`, `isCom`) VALUES
+(10000, 'yangbo', 'yangbo', 0, '2020-12-17 13:00:00', '15128659469', '麦克不可', 1, 0),
+(10001, 'abo1007', 'abo1007', 0, '2021-01-08 00:00:00', '15128659469', '来去之间', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -146,10 +205,22 @@ INSERT INTO `boss_workface` (`workId`, `workTitle`, `workSalary`, `workComId`, `
 --
 
 --
+-- Indexes for table `boss_candidates`
+--
+ALTER TABLE `boss_candidates`
+  ADD PRIMARY KEY (`candId`);
+
+--
 -- Indexes for table `boss_cominfo`
 --
 ALTER TABLE `boss_cominfo`
   ADD PRIMARY KEY (`workComId`);
+
+--
+-- Indexes for table `boss_offer`
+--
+ALTER TABLE `boss_offer`
+  ADD PRIMARY KEY (`workOfferId`);
 
 --
 -- Indexes for table `boss_user`
@@ -174,16 +245,28 @@ ALTER TABLE `boss_workface`
 --
 
 --
+-- 使用表AUTO_INCREMENT `boss_candidates`
+--
+ALTER TABLE `boss_candidates`
+  MODIFY `candId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
+
+--
 -- 使用表AUTO_INCREMENT `boss_cominfo`
 --
 ALTER TABLE `boss_cominfo`
   MODIFY `workComId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1409;
 
 --
+-- 使用表AUTO_INCREMENT `boss_offer`
+--
+ALTER TABLE `boss_offer`
+  MODIFY `workOfferId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
+
+--
 -- 使用表AUTO_INCREMENT `boss_user`
 --
 ALTER TABLE `boss_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
 
 --
 -- 使用表AUTO_INCREMENT `boss_workface`
