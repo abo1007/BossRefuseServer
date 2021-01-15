@@ -125,11 +125,43 @@ class WorkfaceController extends BaseController
         $workfaces = Workface::where("workCateId", $cateid)->join('cominfo', 'workface.workComId', 'cominfo.workComId')->
         select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')->get()->toArray();
 
+        $workfaces = $this->workTagsToArr($workfaces);
+
+        return $this->create($workfaces, "数据获取成功", 200);
+    }
+
+    /**
+     * 多个细分分类数据
+     * @param String $cateid
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+
+    public function subclassifys($cateids)
+    {
+
+        $cateids = explode(",", $cateids);
+
+        $workfaces = [];
+
+        for ($i = 0; $i < count($cateids); $i++) {
+            $workfaces[$i] = Workface::where("workCateId", $cateids[$i])->join('cominfo', 'workface.workComId', 'cominfo.workComId')->
+            select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')->get()->toArray();
+        }
+        for ($i = 0; $i < count($workfaces); $i++) {
+            $workfaces[$i] = $this->workTagsToArr($workfaces[$i]);
+        }
+
+        return $this->create($workfaces, "数据获取成功", 200);
+
+    }
+    public function workTagsToArr($workfaces){
+        if(empty($workfaces)){
+            return [];
+        }
         for ($i = 0; $i < count($workfaces); $i++) {
             $a = explode("，", $workfaces[$i]["workTag"]);
             $workfaces[$i]["workTag"] = $a;
         }
-
-        return $this->create($workfaces, "数据获取成功", 200);
+        return $workfaces;
     }
 }

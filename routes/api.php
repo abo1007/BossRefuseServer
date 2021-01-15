@@ -21,8 +21,10 @@ Route::apiResource('workface','WorkfaceController');
 
 // 工作数据标题 分类
 Route::get('workface/cate/{cateid}','WorkfaceController@classify') -> name('workface.cate');
-// 工作数据标题 小分类
+// 工作数据标题 小分类 与 多个小分类
 Route::get('workface/subcate/{cateid}','WorkfaceController@subclassify') -> name('workface.subcate');
+Route::get('workface/subcates/{cateid}','WorkfaceController@subclassifys') -> name('workface.subcates');
+
 
 Route::apiResource("user",'UserController');
 // 登录验证
