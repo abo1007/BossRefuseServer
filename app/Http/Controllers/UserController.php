@@ -83,12 +83,18 @@ class UserController extends BaseController
         if ($vaildator->fails()) {
             return $this->create([], $vaildator->errors(), 400);
         } else {
-            // 取得结果集 提高效率 只取id字段
-            $resid = User::select("id")->where("username", $data["username"])->get();
 
-            if (!empty($resid)) {
+            $loginData = array("username" => $data["username"], "isCom" => $data["mode"]);
+            // 取得结果集 提高效率 只取id字段
+            $resid = User::select("id")->where($loginData)->get();
+
+//            dd($resid);
+
+            if (!empty($resid[0])) {
+
                 $res = User::select("password")->where("id", $resid[0]["id"])->get();
                 $res = $res[0]["password"];
+
                 if ($res == $data["password"]) {
                     return $this->create(["id" => $resid[0]["id"], "username" => $data["username"]], "用户登录成功", 200);
                 } else {
@@ -127,7 +133,8 @@ class UserController extends BaseController
      * @param Request $req
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function updatePass(Request $req){
+    public function updatePass(Request $req)
+    {
 
         return $this->create([], "未开放此API", 400);
 
@@ -138,7 +145,8 @@ class UserController extends BaseController
      * @param Request $req
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function registerUser(Request $req){
+    public function registerUser(Request $req)
+    {
 
         return $this->create([], "未开放此API", 400);
 

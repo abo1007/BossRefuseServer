@@ -23,11 +23,8 @@ class WorkfaceController extends BaseController
         paginate(10)->toArray();
 
 //        dd($workfaces);
-        // 分页后 多一层架构
-        for ($i = 0; $i < count($workfaces["data"]); $i++) {
-            $a = explode("，", $workfaces["data"][$i]["workTag"]);
-            $workfaces["data"][$i]["workTag"] = $a;
-        }
+        // 分页后 多一层结构
+        $workfaces["data"] = $this->workTagsToArr($workfaces["data"]);
 
         return $this->create($workfaces, "数据获取成功", 200);
     }
@@ -101,10 +98,7 @@ class WorkfaceController extends BaseController
         $workfaces = Workface::where("workCateId", "like", $cateid . "%")->join('cominfo', 'workface.workComId', 'cominfo.workComId')->
         select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')->get()->toArray();
 
-        for ($i = 0; $i < count($workfaces); $i++) {
-            $a = explode("，", $workfaces[$i]["workTag"]);
-            $workfaces[$i]["workTag"] = $a;
-        }
+        $workfaces = $this->workTagsToArr($workfaces);
 
         if (count($workfaces) < 1) {
             return $this->create($workfaces, "无数据", 204);
