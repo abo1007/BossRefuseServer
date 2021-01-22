@@ -37,4 +37,8 @@ Route::post('user/updatepass','UserController@updatePass') -> name('user.updatep
 Route::post('user/reguser','UserController@registerUser') -> name('user.reguser');
 
 
-Route::apiResource('offer','OfferController');
+//Route::apiResource('offer','OfferController');
+// 拒绝 沟通中 待面试 录用 收藏 的全部数据
+Route::get('offer','OfferController@index') -> name('offer.index');
+// 拒绝 沟通中 待面试 录用 收藏 的数量
+Route::get('offer/getcount/{comId}','OfferController@count') -> name('offer.count');

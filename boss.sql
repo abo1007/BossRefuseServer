@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-01-09 14:49:03
+-- Generation Time: 2021-01-21 13:41:36
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -40,15 +40,16 @@ CREATE TABLE `boss_candidates` (
   `certificate` varchar(300) COLLATE utf8mb4_bin NOT NULL,
   `honor` varchar(300) COLLATE utf8mb4_bin NOT NULL,
   `expect` varchar(300) COLLATE utf8mb4_bin NOT NULL,
-  `intro` varchar(300) COLLATE utf8mb4_bin NOT NULL
+  `intro` varchar(300) COLLATE utf8mb4_bin NOT NULL,
+  `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- 转存表中的数据 `boss_candidates`
 --
 
-INSERT INTO `boss_candidates` (`candId`, `name`, `sex`, `age`, `edu`, `school`, `workExper`, `projectExper`, `certificate`, `honor`, `expect`, `intro`) VALUES
-(10000, '杨波', 0, 24, '不详', '清华大学西伯利亚分校农学院', '无', '无', '无', '一带一路暨金砖国家技能发展与技术大赛之网站设计与开发大赛三等奖', '4-6k，前端工程师，天津', '我是开发者');
+INSERT INTO `boss_candidates` (`candId`, `name`, `sex`, `age`, `edu`, `school`, `workExper`, `projectExper`, `certificate`, `honor`, `expect`, `intro`, `userId`) VALUES
+(10000, '杨波', 0, 24, '不详', '清华大学西伯利亚分校农学院', '无', '无', '无', '一带一路暨金砖国家技能发展与技术大赛之网站设计与开发大赛三等奖', '4-6k，前端工程师，天津', '我是开发者', 10001);
 
 -- --------------------------------------------------------
 
@@ -90,15 +91,17 @@ CREATE TABLE `boss_offer` (
   `userId` int(11) NOT NULL,
   `workComId` int(11) NOT NULL,
   `candId` int(11) NOT NULL,
-  `workId` int(11) NOT NULL
+  `workId` int(11) NOT NULL,
+  `editorId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- 转存表中的数据 `boss_offer`
 --
 
-INSERT INTO `boss_offer` (`workOfferId`, `workOfferType`, `userId`, `workComId`, `candId`, `workId`) VALUES
-(10000, 1, 10001, 1408, 10000, 10001);
+INSERT INTO `boss_offer` (`workOfferId`, `workOfferType`, `userId`, `workComId`, `candId`, `workId`, `editorId`) VALUES
+(10000, 1, 10001, 1408, 10000, 10001, 10000),
+(10001, 2, 10001, 1408, 10000, 10001, 10000);
 
 -- --------------------------------------------------------
 
@@ -123,7 +126,7 @@ CREATE TABLE `boss_user` (
 --
 
 INSERT INTO `boss_user` (`id`, `username`, `password`, `sex`, `regtime`, `phonenum`, `nickname`, `isvip`, `isCom`) VALUES
-(10000, 'yangbo', 'yangbo', 0, '2020-12-17 13:00:00', '15128659469', '麦克不可', 1, 0),
+(10000, 'yangbo', 'yangbo', 0, '2020-12-17 13:00:00', '15128659469', '麦克不可', 1, 1),
 (10001, 'abo1007', 'abo1007', 0, '2021-01-08 00:00:00', '15128659469', '来去之间', 1, 0);
 
 -- --------------------------------------------------------
@@ -260,7 +263,7 @@ ALTER TABLE `boss_cominfo`
 -- 使用表AUTO_INCREMENT `boss_offer`
 --
 ALTER TABLE `boss_offer`
-  MODIFY `workOfferId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
+  MODIFY `workOfferId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
 
 --
 -- 使用表AUTO_INCREMENT `boss_user`

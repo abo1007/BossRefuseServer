@@ -8,13 +8,14 @@ use App\api\Offer;
 class OfferController extends BaseController
 {
     /**
-     * Display a listing of the resource.
+     * 拒绝 沟通中 待面试 录用 收藏 的信息
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
         //
+        return $this -> create([], "数据获取成功", 200);
     }
 
     /**
@@ -64,13 +65,28 @@ class OfferController extends BaseController
 
     /**
      * 统计各类offer信息条数 常用
+     * 拒绝 沟通中 待面试 录用 收藏 的数量
      * @param $id
      * @return array
      */
 
-    public function count($id)
+    public function count($comId, $type = 5)
     {
+        $coms = Offer::where("workComId", $comId)->get()->toArray();
 
-        return $this -> create([1, 2, 3, 4], "数据获取成功", 200);
+        // 拒绝 沟通中 待面试 录用 收藏
+        $countData = array(0, 0, 0, 0, 0);
+
+        if (!empty($coms)) {
+            for ($i = 0; $i < count($coms); $i++) {
+                $num = $coms[$i]["workOfferType"];
+                $countData[$num]++;
+            }
+            return $this -> create($countData, "数据获取成功", 200);
+        } else {
+            return $this -> create([0, 0, 0, 0], "数据获取成功", 200);
+        }
+
     }
+
 }
