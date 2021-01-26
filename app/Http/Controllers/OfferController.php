@@ -70,9 +70,14 @@ class OfferController extends BaseController
      * @return array
      */
 
-    public function count($comId, $type = 5)
+    public function count(Request $req)
     {
-        $coms = Offer::where("workComId", $comId)->get()->toArray();
+        $req = $req->all();
+        if($req["type"] == 0){
+            $coms = Offer::where("userId", $req["uid"])->get()->toArray();
+        }else{
+            $coms = Offer::where("workComId", $req["uid"])->get()->toArray();
+        }
 
         // 拒绝 沟通中 待面试 录用 收藏
         $countData = array(0, 0, 0, 0, 0);
@@ -84,7 +89,7 @@ class OfferController extends BaseController
             }
             return $this -> create($countData, "数据获取成功", 200);
         } else {
-            return $this -> create([0, 0, 0, 0], "数据获取成功", 200);
+            return $this -> create([0, 0, 0, 0, 0], "数据获取成功", 200);
         }
 
     }
