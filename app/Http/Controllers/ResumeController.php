@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\api\Resume;
+use function Sodium\add;
 
 class ResumeController extends BaseController
 {
@@ -69,7 +70,21 @@ class ResumeController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $data = $request->all();
+        $updateData = array();
+        foreach ($data as $key=>$item){
+            $updateData[$key] = $item;
+        }
+
+        $sqlNum = Resume::where("userId",$id)->update($updateData);
+
+        if($sqlNum > 0){
+            return $this->create(true,"修改成功",200);
+        }else{
+            return $this->create(false,"未能修改",208);
+        }
+
     }
 
     /**
