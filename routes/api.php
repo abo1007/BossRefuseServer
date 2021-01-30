@@ -42,7 +42,8 @@ Route::post('user/reguser','UserController@registerUser') -> name('user.reguser'
 Route::get('offer','OfferController@index') -> name('offer.index');
 // 拒绝 沟通中 待面试 录用 收藏 的数量
 Route::post('offer/getcount','OfferController@count') -> name('offer.count');
-
+// 拒绝 沟通中 待面试 录用 收藏 各类信息
+Route::get('offer/getcate/{id}/{cateid}','OfferController@offerCate') -> name('offer.cate');
 
 // 简历功能
 Route::apiResource('resume','ResumeController');

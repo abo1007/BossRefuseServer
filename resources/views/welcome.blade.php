@@ -85,12 +85,12 @@
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Blog</a>
-                    <a href="https://laracasts.com">PHP</a>
-                    <a href="https://laravel-news.com">Mysql</a>
-                    <a href="https://blog.laravel.com">Laravel</a>
-                    <a href="https://nova.laravel.com">Ajax</a>
-                    <a href="https://forge.laravel.com">Javascript</a>
+                    <a href="https://blog.csdn.net/m0_46470372">Blog</a>
+                    <a href="https://blog.csdn.net/m0_46470372">PHP</a>
+                    <a href="https://blog.csdn.net/m0_46470372">Mysql</a>
+                    <a href="https://blog.csdn.net/m0_46470372">Laravel</a>
+                    <a href="https://blog.csdn.net/m0_46470372">Ajax</a>
+                    <a href="https://blog.csdn.net/m0_46470372">Javascript</a>
                     <a href="https://https://github.com/abo1007">GitHub</a>
                 </div>
             </div>

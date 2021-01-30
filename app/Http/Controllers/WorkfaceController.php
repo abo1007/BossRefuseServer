@@ -18,9 +18,10 @@ class WorkfaceController extends BaseController
     public function index()
     {
         // 获取所有
-        $workfaces = Workface::join('cominfo', 'workface.workComId', 'cominfo.workComId')->
-        select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')->
-        paginate(10)->toArray();
+        $workfaces = Workface::join('cominfo', 'workface.workComId', 'cominfo.workComId')
+            ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
+            ->paginate(10)
+            ->toArray();
 
 //        dd($workfaces);
         // 分页后 多一层结构
@@ -38,8 +39,6 @@ class WorkfaceController extends BaseController
     public function store(Request $request)
     {
         //
-
-
     }
 
     /**
@@ -95,8 +94,11 @@ class WorkfaceController extends BaseController
     public function classify($cateid)
     {
 
-        $workfaces = Workface::where("workCateId", "like", $cateid . "%")->join('cominfo', 'workface.workComId', 'cominfo.workComId')->
-        select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')->get()->toArray();
+        $workfaces = Workface::where("workCateId", "like", $cateid . "%")
+            ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
+            ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
+            ->get()
+            ->toArray();
 
         $workfaces = $this->workTagsToArr($workfaces);
 
@@ -116,8 +118,11 @@ class WorkfaceController extends BaseController
     public function subclassify($cateid)
     {
 
-        $workfaces = Workface::where("workCateId", $cateid)->join('cominfo', 'workface.workComId', 'cominfo.workComId')->
-        select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')->get()->toArray();
+        $workfaces = Workface::where("workCateId", $cateid)
+            ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
+            ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
+            ->get()
+            ->toArray();
 
         $workfaces = $this->workTagsToArr($workfaces);
 
@@ -138,8 +143,11 @@ class WorkfaceController extends BaseController
         $workfaces = [];
 
         for ($i = 0; $i < count($cateids); $i++) {
-            $workfaces[$i] = Workface::where("workCateId", $cateids[$i])->join('cominfo', 'workface.workComId', 'cominfo.workComId')->
-            select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')->get()->toArray();
+            $workfaces[$i] = Workface::where("workCateId", $cateids[$i])
+                ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
+                ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
+                ->get()
+                ->toArray();
         }
         for ($i = 0; $i < count($workfaces); $i++) {
             $workfaces[$i] = $this->workTagsToArr($workfaces[$i]);

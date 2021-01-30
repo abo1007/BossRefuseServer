@@ -80,9 +80,9 @@ class ResumeController extends BaseController
         $sqlNum = Resume::where("userId",$id)->update($updateData);
 
         if($sqlNum > 0){
-            return $this->create(true,"修改成功",200);
+            return $this->create(1,"修改成功",200);
         }else{
-            return $this->create(false,"未能修改",208);
+            return $this->create(0,"未能修改",208);
         }
 
     }

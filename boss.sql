@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-01-25 07:00:08
+-- Generation Time: 2021-01-29 12:34:09
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -72,7 +72,7 @@ CREATE TABLE `boss_offer` (
 
 INSERT INTO `boss_offer` (`workOfferId`, `workOfferType`, `userId`, `workComId`, `candId`, `workId`, `editorId`) VALUES
 (10000, 1, 10001, 1408, 10000, 10001, 10000),
-(10001, 2, 10001, 1408, 10000, 10001, 10000);
+(10001, 2, 10001, 1408, 10000, 10002, 10000);
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE `boss_resume` (
   `age` int(3) NOT NULL,
   `edu` varchar(20) COLLATE utf8mb4_bin NOT NULL,
   `school` varchar(50) COLLATE utf8mb4_bin NOT NULL,
-  `workExper` varchar(300) COLLATE utf8mb4_bin NOT NULL,
+  `workExper` int(5) NOT NULL,
   `projectExper` varchar(500) COLLATE utf8mb4_bin NOT NULL,
   `certificate` varchar(300) COLLATE utf8mb4_bin NOT NULL,
   `honor` varchar(300) COLLATE utf8mb4_bin NOT NULL,
@@ -101,7 +101,10 @@ CREATE TABLE `boss_resume` (
 --
 
 INSERT INTO `boss_resume` (`candId`, `name`, `sex`, `age`, `edu`, `school`, `workExper`, `projectExper`, `certificate`, `honor`, `expect`, `intro`, `userId`) VALUES
-(10000, '杨波', 0, 24, '不详', '清华大学西伯利亚分校农学院', '无', '无', '无', '一带一路暨金砖国家技能发展与技术大赛之网站设计与开发大赛三等奖', '天津，前端工程师，4-6k', '我是开发者', 10001);
+(10000, '杨波', 0, 24, '博士', '清华大学西伯利亚分校农学院', 10, '无', '无', '一带一路暨金砖国家技能发展与技术大赛之网站设计与开发大赛三等奖', '天津，Java工程师，4-6k', '我是开发者', 10001),
+(10001, '岳大颖', 1, 22, '大专', '五道口职业学院', 0, '无', '无', '无', '天津，UI设计师，4-6k', 'hello world', 10002),
+(10002, '粑粑颖', 1, 22, '大专', '五道口职业学院', 0, '无', '无', '无', '天津，UI设计师，4-6k', 'hello world', 10003),
+(10003, '蔡大头', 0, 20, '高中/中专/职高', '廊坊九中', 0, '无', '无', '无', '南京，其他，15k以上', 'hello world', 10004);
 
 -- --------------------------------------------------------
 
@@ -263,7 +266,7 @@ ALTER TABLE `boss_offer`
 -- 使用表AUTO_INCREMENT `boss_resume`
 --
 ALTER TABLE `boss_resume`
-  MODIFY `candId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10001;
+  MODIFY `candId` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10004;
 
 --
 -- 使用表AUTO_INCREMENT `boss_user`
