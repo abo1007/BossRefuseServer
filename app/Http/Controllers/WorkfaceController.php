@@ -31,7 +31,7 @@ class WorkfaceController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 录入 招聘信息
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -39,6 +39,21 @@ class WorkfaceController extends BaseController
     public function store(Request $request)
     {
         //
+        $data = $request->all();
+        $insertData = array("workTitle" => $data["workTitle"], "workSalary" => $data["workSalary"], "workTag" => $data["workTag"],
+            "workPublisher" => $data["workPublisher"], "workCateId" => $data["workCateId"], "workComId" => $data["workComId"]);
+        $result = Workface::insertGetId($insertData);
+        if ($result) {
+            $result2 = DB::table("workinfo")->insert(array("workId" => $result, "workIntro" => $data["workIntro"]));
+            if ($result2) {
+                return $this->create(1, "插入成功", 200);
+            } else {
+                return $this->create(0, "插入失败", 400);
+            }
+        } else {
+            return $this->create(0, "插入失败", 400);
+        }
+
     }
 
     /**
@@ -50,14 +65,23 @@ class WorkfaceController extends BaseController
     public function show($id)
     {
         // 单条展示
-        $data = Workface::select()->find($id);
         if (!is_numeric($id)) {
             return $this->create([], "id参数错误", 400);
         }
-        if (empty($data)) {
+
+        $workfaces = Workface::where($id)
+            ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
+            ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
+            ->get()
+            ->toArray();
+
+        $workfaces = $this->workTagsToArr($workfaces);
+
+
+        if (empty($workfaces)) {
             return $this->create([], "无数据", 204);
         } else {
-            return $this->create($data, "数据请求成功", 200);
+            return $this->create($workfaces, "数据请求成功", 200);
         }
 
     }
@@ -156,8 +180,37 @@ class WorkfaceController extends BaseController
         return $this->create($workfaces, "数据获取成功", 200);
 
     }
-    public function workTagsToArr($workfaces){
-        if(empty($workfaces)){
+
+    /**
+     * 根据 企业id 返回企业发布的招聘信息
+     * @param $comid
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function comShow($comid)
+    {
+
+        $data = Workface::where("workface.workComId", $comid)
+            ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
+            ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
+            ->get()->toArray();
+
+        $data = $this->workTagsToArr($data) ;
+
+        if (empty($data)) {
+            return $this->create([], "无数据", 204);
+        } else {
+            return $this->create($data, "数据请求成功", 200);
+        }
+    }
+
+    /**
+     * tag字段转换数组
+     * @param $workfaces
+     * @return array
+     */
+    public function workTagsToArr($workfaces)
+    {
+        if (empty($workfaces)) {
             return [];
         }
         for ($i = 0; $i < count($workfaces); $i++) {

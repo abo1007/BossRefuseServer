@@ -24,6 +24,8 @@ Route::get('workface/cate/{cateid}','WorkfaceController@classify') -> name('work
 // 工作数据标题 小分类 与 多个小分类
 Route::get('workface/subcate/{cateid}','WorkfaceController@subclassify') -> name('workface.subcate');
 Route::get('workface/subcates/{cateid}','WorkfaceController@subclassifys') -> name('workface.subcates');
+// 企业发布的招聘信息
+Route::get('workface/com/{comid}','WorkfaceController@comShow') -> name('workface.comShow');
 
 
 Route::apiResource("user",'UserController');
@@ -44,6 +46,10 @@ Route::get('offer','OfferController@index') -> name('offer.index');
 Route::post('offer/getcount','OfferController@count') -> name('offer.count');
 // 拒绝 沟通中 待面试 录用 收藏 各类信息
 Route::get('offer/getcate/{id}/{cateid}','OfferController@offerCate') -> name('offer.cate');
+Route::get('offer/getcomcate/{id}/{cateid}','OfferController@comOfferCate') -> name('offer.comCate');
+
+Route::post('offer/updatetype','OfferController@comUpdateOfferType') -> name('offer.updateType');
+
 
 // 简历功能
 Route::apiResource('resume','ResumeController');

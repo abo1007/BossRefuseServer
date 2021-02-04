@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-01-29 12:34:09
+-- Generation Time: 2021-02-04 07:30:56
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -71,8 +71,9 @@ CREATE TABLE `boss_offer` (
 --
 
 INSERT INTO `boss_offer` (`workOfferId`, `workOfferType`, `userId`, `workComId`, `candId`, `workId`, `editorId`) VALUES
-(10000, 1, 10001, 1408, 10000, 10001, 10000),
-(10001, 2, 10001, 1408, 10000, 10002, 10000);
+(10000, 3, 10001, 1408, 10000, 10001, 10000),
+(10001, 2, 10001, 1408, 10000, 10002, 10000),
+(10002, 4, 10001, 1408, 10000, 10002, 10000);
 
 -- --------------------------------------------------------
 
@@ -93,18 +94,19 @@ CREATE TABLE `boss_resume` (
   `honor` varchar(300) COLLATE utf8mb4_bin NOT NULL,
   `expect` varchar(300) COLLATE utf8mb4_bin NOT NULL,
   `intro` varchar(300) COLLATE utf8mb4_bin NOT NULL,
-  `userId` int(11) NOT NULL
+  `userId` int(11) NOT NULL,
+  `isShow` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- 转存表中的数据 `boss_resume`
 --
 
-INSERT INTO `boss_resume` (`candId`, `name`, `sex`, `age`, `edu`, `school`, `workExper`, `projectExper`, `certificate`, `honor`, `expect`, `intro`, `userId`) VALUES
-(10000, '杨波', 0, 24, '博士', '清华大学西伯利亚分校农学院', 10, '无', '无', '一带一路暨金砖国家技能发展与技术大赛之网站设计与开发大赛三等奖', '天津，Java工程师，4-6k', '我是开发者', 10001),
-(10001, '岳大颖', 1, 22, '大专', '五道口职业学院', 0, '无', '无', '无', '天津，UI设计师，4-6k', 'hello world', 10002),
-(10002, '粑粑颖', 1, 22, '大专', '五道口职业学院', 0, '无', '无', '无', '天津，UI设计师，4-6k', 'hello world', 10003),
-(10003, '蔡大头', 0, 20, '高中/中专/职高', '廊坊九中', 0, '无', '无', '无', '南京，其他，15k以上', 'hello world', 10004);
+INSERT INTO `boss_resume` (`candId`, `name`, `sex`, `age`, `edu`, `school`, `workExper`, `projectExper`, `certificate`, `honor`, `expect`, `intro`, `userId`, `isShow`) VALUES
+(10000, '杨波', 0, 24, '博士', '清华大学西伯利亚分校农学院', 10, '无', '无', '一带一路暨金砖国家技能发展与技术大赛之网站设计与开发大赛三等奖', '天津，Java工程师，4-6k', '我是开发者', 10001, 0),
+(10001, '岳大颖', 1, 22, '大专', '五道口职业学院', 0, '无', '无', '无', '天津，UI设计师，4-6k', 'hello world', 10002, 0),
+(10002, '摇摆羊', 0, 22, '初中及以下', '宋庄子中学', 0, '无', '无', '无', '沈阳，品牌公关，8-15k', '几天不见，怎么这么拉了？', 10003, 0),
+(10003, '蔡大头', 0, 20, '高中/中专/职高', '廊坊九中', 0, '无', '无', '无', '南京，其他，15k以上', 'hello world', 10004, 0);
 
 -- --------------------------------------------------------
 
@@ -204,7 +206,28 @@ CREATE TABLE `boss_workface` (
 
 INSERT INTO `boss_workface` (`workId`, `workTitle`, `workSalary`, `workComId`, `workTag`, `workPublisher`, `workCateId`) VALUES
 (10001, '全栈工程师', '1-2K', 1408, '3-5年，硕士研究生，Vue，Java', '刘先生·人事', 106),
-(10002, '产品经理', '0.5-1.5K', 1408, '1-3年，本科', '刘先生·人事', 201);
+(10002, '产品经理', '0.5-1.5K', 1408, '1-3年，本科', '刘先生·人事', 201),
+(10003, 'UI设计师', '6-10k', 1408, '专科，3年，Ps，Ai', '人事·老王', 301),
+(10004, 'Java架构师', '30-60k', 1408, '本科，5-10年，985/211，Java', '人事·老王', 101);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `boss_workinfo`
+--
+
+CREATE TABLE `boss_workinfo` (
+  `workId` int(11) NOT NULL,
+  `workIntro` varchar(900) COLLATE utf8mb4_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 转存表中的数据 `boss_workinfo`
+--
+
+INSERT INTO `boss_workinfo` (`workId`, `workIntro`) VALUES
+(10003, '我们的使命是让天下没有不勤劳的打工人'),
+(10004, '高薪急聘Java架构师，要求精通Java、JavaWeb、HTTP、Servlet、Spring、SpringMVC、SpringBoot、Mybatis、MySQL、Oracle、Redis、JQuery、Ajax、Vue，要求深入掌握JVM虚拟机原理，能够实现数据库重写调优，熟悉Linux环境开发，对Hibernate、Tomcat等工具有所涉猎');
 
 --
 -- Indexes for dumped tables
@@ -247,6 +270,12 @@ ALTER TABLE `boss_workface`
   ADD PRIMARY KEY (`workId`);
 
 --
+-- Indexes for table `boss_workinfo`
+--
+ALTER TABLE `boss_workinfo`
+  ADD PRIMARY KEY (`workId`);
+
+--
 -- 在导出的表使用AUTO_INCREMENT
 --
 
@@ -260,7 +289,7 @@ ALTER TABLE `boss_cominfo`
 -- 使用表AUTO_INCREMENT `boss_offer`
 --
 ALTER TABLE `boss_offer`
-  MODIFY `workOfferId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
+  MODIFY `workOfferId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10003;
 
 --
 -- 使用表AUTO_INCREMENT `boss_resume`
@@ -278,7 +307,13 @@ ALTER TABLE `boss_user`
 -- 使用表AUTO_INCREMENT `boss_workface`
 --
 ALTER TABLE `boss_workface`
-  MODIFY `workId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10003;
+  MODIFY `workId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10005;
+
+--
+-- 使用表AUTO_INCREMENT `boss_workinfo`
+--
+ALTER TABLE `boss_workinfo`
+  MODIFY `workId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10005;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

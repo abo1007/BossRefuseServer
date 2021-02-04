@@ -95,14 +95,15 @@ class OfferController extends BaseController
     }
 
     /**
-     * 分类数据获取
+     * 用户 分类数据获取
      * @param int $id
      * @param int $cateid
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function offerCate($id, $cateid)
     {
-        $data = Offer::where(array("userId" => $id, "workOfferType" => $cateid))
+
+        $data = Offer::where(array("offer.userId" => $id, "workOfferType" => $cateid))
             ->join("cominfo", "offer.workComId", "cominfo.workComId")
             ->join("workface", "offer.workId", "workface.workId")
             ->select("offer.*", "workface.*", 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
@@ -112,6 +113,53 @@ class OfferController extends BaseController
             return $this->create($data, "数据获取成功", 200);
         } else {
             return $this->create($data, "无数据", 204);
+        }
+    }
+
+    /**
+     * 企业 分类数据获取
+     * @param int $id
+     * @param int $cateid
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+
+    public function comOfferCate($id, $cateid)
+    {
+        if($cateid == 666){
+            $queryArr = array("offer.workComId" => $id);
+        }else{
+            $queryArr = array("offer.workComId" => $id, "workOfferType" => $cateid);
+        }
+
+        $data = Offer::where($queryArr)
+            ->join("resume", "offer.candId", "resume.candId")
+            ->join("workface", "offer.workId", "workface.workId")
+                ->select("offer.*", "workface.workTitle",'workface.workSalary', 'resume.name', 'resume.age', 'resume.school', 'resume.edu', 'resume.workExper')
+            ->get()->toArray();
+
+        if (!empty($data)) {
+            return $this->create($data, "数据获取成功", 200);
+        } else {
+            return $this->create($data, "无数据", 204);
+        }
+    }
+
+    /**
+     * 修改offer状态
+     * @param Request $req
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function comUpdateOfferType(Request $req)
+    {
+        $data = $req->all();
+
+        $result = Offer::where(array("workComId"=>$data["id"], "workOfferId"=>$data["workOfferId"]))
+            ->update(array("workOfferType"=>$data["typeId"]));
+
+        if (!empty($result)) {
+            return $this->create(1, "修改成功", 200);
+        } else {
+            return $this->create(0, "修改无效", 400);
         }
     }
 }
