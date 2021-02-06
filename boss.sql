@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-02-04 07:30:56
+-- Generation Time: 2021-02-06 10:19:12
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -205,10 +205,12 @@ CREATE TABLE `boss_workface` (
 --
 
 INSERT INTO `boss_workface` (`workId`, `workTitle`, `workSalary`, `workComId`, `workTag`, `workPublisher`, `workCateId`) VALUES
-(10001, '全栈工程师', '1-2K', 1408, '3-5年，硕士研究生，Vue，Java', '刘先生·人事', 106),
-(10002, '产品经理', '0.5-1.5K', 1408, '1-3年，本科', '刘先生·人事', 201),
-(10003, 'UI设计师', '6-10k', 1408, '专科，3年，Ps，Ai', '人事·老王', 301),
-(10004, 'Java架构师', '30-60k', 1408, '本科，5-10年，985/211，Java', '人事·老王', 101);
+(10001, '全栈工程师', '1-2K', 1408, '硕士，3-5年，Vue，Java', '刘先生·人事', 106),
+(10002, '产品经理', '0.5-1.5K', 1408, '本科，1-3年，弹性工作，大牛云集', '刘先生·人事', 201),
+(10003, 'UI设计师', '6-10k', 1408, '本科，3年，Ps，Ai', '人事·老王', 301),
+(10004, 'Java架构师', '30-60k', 1408, '本科，5-10年，985/211，Java', '人事·老王', 101),
+(10005, '前端工程师', '6-8k', 1408, '硕士，5-10年，五险一金，996', '人事·老王', 102),
+(10006, '电商运营', '2-4k', 1408, '高中/中专/职高，1年以内，弹性工作', '人事·老王', 401);
 
 -- --------------------------------------------------------
 
@@ -226,8 +228,12 @@ CREATE TABLE `boss_workinfo` (
 --
 
 INSERT INTO `boss_workinfo` (`workId`, `workIntro`) VALUES
+(10001, '岗位职责<br/> 1、负责子公司职场系统（HR系统、OA系统、财务系统等）的维护和新功能二次开发；<br/>2、负责HR系统和审核业务系统的打通，如打卡和工作量统计等；<br/>3、参与团队前端技术栈的建设和更新；<br/>岗位要求<br/>1、精通Javasript/HTML/CSS等前端开发技术，基础扎实；<br/>2、熟悉当下主流的前端框架(React/Vue/Angular等)，有React开发经验优先；<br/>3、两年及以上 Node.js 开发工作经验，熟悉 ES6, ES7 语法，有 Express 或 Koa 框架的使用经验；<br/> 4、熟悉Linux/Unix平台开发，至少熟悉一种脚本语言，具备优秀的代码习惯；<br/> 5、理解微服务架构，有分布式系统搭建与研发经验；<br/>6、熟悉Web应用系统开发，对HTTP、TCP/IP协议及web服务器等有所理解；拥有良好的安全意识，熟悉常见的网络安全攻防策略；<br/>7、有Nginx、Elasticsearch、Kafka等开源工具运维开发经验者优先；<br/>8、有 MySQL, Redis 或 MongoDB 等相关数据库使用经验；<br/>9、有主导开发过中型以上系统经验，有ci/cd等自动化部署经验者优先；<br/>10、良好的沟通表能力和团队合作精神，有责任心，抗压能力好；<br/>'),
+(10002, '团队介绍：<br/>承担“软件项目研发平台”产品及其他产品的设计和管理工作，功能为软件类项目的商务管理、开发自动化管理、devops等，目前主要服务客户属金融行业。<br/>岗位职责<br/>与用户沟通，分析用户需求<br/>产品设计，规划产品需求，产品原型设计，PRD文档撰写；<br/>产品设计方案对上级领导和用户领导的汇报，沟通，接受评审<br/>向开发人员传达产品设计方案，指导开发工作<br/>控制产品开发进度，验收开发成果，推进产品的最终交付<br/>工作期间会频繁到北京与用户和同事开会沟通，可视表现和个人意愿选择常驻北京工作<br/>职位要求：<br/>软件工程或相关专业全日制本科及以上学历<br/>具有管理系统或大数据系统设计经验者优先<br/>良好的工作态度和主动解决问题的意识，逻辑性强<br/>良好的表达能力和沟通习惯<br/>具备一定的用户体验设计和UI设计能力<br/>熟悉产品设计的流程和工具<br/>'),
 (10003, '我们的使命是让天下没有不勤劳的打工人'),
-(10004, '高薪急聘Java架构师，要求精通Java、JavaWeb、HTTP、Servlet、Spring、SpringMVC、SpringBoot、Mybatis、MySQL、Oracle、Redis、JQuery、Ajax、Vue，要求深入掌握JVM虚拟机原理，能够实现数据库重写调优，熟悉Linux环境开发，对Hibernate、Tomcat等工具有所涉猎');
+(10004, '高薪急聘Java架构师，要求精通Java、JavaWeb、HTTP、Servlet、Spring、SpringMVC、SpringBoot、Mybatis、MySQL、Oracle、Redis、JQuery、Ajax、Vue，要求深入掌握JVM虚拟机原理，能够实现数据库重写调优，熟悉Linux环境开发，对Hibernate、Tomcat等工具有所涉猎'),
+(10005, '要求上知天文，下知地理'),
+(10006, '简单易做');
 
 --
 -- Indexes for dumped tables
@@ -307,13 +313,13 @@ ALTER TABLE `boss_user`
 -- 使用表AUTO_INCREMENT `boss_workface`
 --
 ALTER TABLE `boss_workface`
-  MODIFY `workId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10005;
+  MODIFY `workId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10007;
 
 --
 -- 使用表AUTO_INCREMENT `boss_workinfo`
 --
 ALTER TABLE `boss_workinfo`
-  MODIFY `workId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10005;
+  MODIFY `workId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10007;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

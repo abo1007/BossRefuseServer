@@ -57,7 +57,7 @@ class WorkfaceController extends BaseController
     }
 
     /**
-     * Display the specified resource.
+     * 获取招聘详情页信息
      *
      * @param  int $id
      * @return \Illuminate\Http\Response
@@ -69,11 +69,13 @@ class WorkfaceController extends BaseController
             return $this->create([], "id参数错误", 400);
         }
 
-        $workfaces = Workface::where($id)
+        $workfaces = Workface::where("workface.workId",$id)
             ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
-            ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
+            ->join('workinfo','workface.workId','workinfo.workId')
+            ->select('workface.*', 'workinfo.workIntro','cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
             ->get()
             ->toArray();
+
 
         $workfaces = $this->workTagsToArr($workfaces);
 
@@ -81,7 +83,7 @@ class WorkfaceController extends BaseController
         if (empty($workfaces)) {
             return $this->create([], "无数据", 204);
         } else {
-            return $this->create($workfaces, "数据请求成功", 200);
+            return $this->create($workfaces[0], "数据请求成功", 200);
         }
 
     }
@@ -95,7 +97,16 @@ class WorkfaceController extends BaseController
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $updateData = array("workTitle" => $data["workTitle"], "workSalary" => $data["workSalary"], "workTag" => $data["workTag"],
+            "workPublisher" => $data["workPublisher"], "workCateId" => $data["workCateId"], "workComId" => $data["workComId"]);
+        $result = Workface::where("workId",$id)->update($updateData);
+
+        if ($result) {
+            return $this->create(1, "修改成功", 200);
+        } else {
+            return $this->create(0, "修改失败", 400);
+        }
     }
 
     /**
