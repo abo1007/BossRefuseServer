@@ -53,3 +53,6 @@ Route::post('offer/updatetype','OfferController@comUpdateOfferType') -> name('of
 
 // 简历功能
 Route::apiResource('resume','ResumeController');
+
+// 企业信息
+Route::apiResource('cominfo','CominfoController');

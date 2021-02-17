@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-02-06 10:19:12
+-- Generation Time: 2021-02-17 03:54:42
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -48,7 +48,8 @@ CREATE TABLE `boss_cominfo` (
 --
 
 INSERT INTO `boss_cominfo` (`workComId`, `workComName`, `workComPerson`, `workComAllName`, `workComScale`, `workComDate`, `workComCate`, `workComTag`, `workComCity`, `workComArea`, `workComIntro`, `workComCap`) VALUES
-(1408, '白嫖科技', '杰克马', '南京市白嫖科技发展有限公司', '0-9', '2010-01-01', '互联网/科技', '朝八晚六，收费零食，自费团建', '南京市', '鼓楼区', '这个公司很懒，什么都没有留下', 1);
+(1408, '白嫖科技', '杰克马', '南京市白嫖科技发展有限公司', '0-9', '2010-01-01', '互联网/科技', '朝八晚六，收费零食，自费团建', '南京市', '鼓楼区', '这个公司很懒，什么都没有留下', 1),
+(1409, '巴里阿阿', '马不兴', '巴里阿阿(北京)有限公司', '500', '2002-01-01', '互联网/科技', '节假双休，下午茶，零食水果，弹性工作，员工餐', '北京市', '海淀区', '巴里阿阿集团的宗旨是让天下没有好做的生意', 10000);
 
 -- --------------------------------------------------------
 
@@ -71,9 +72,10 @@ CREATE TABLE `boss_offer` (
 --
 
 INSERT INTO `boss_offer` (`workOfferId`, `workOfferType`, `userId`, `workComId`, `candId`, `workId`, `editorId`) VALUES
-(10000, 3, 10001, 1408, 10000, 10001, 10000),
+(10000, 1, 10001, 1408, 10000, 10001, 10000),
 (10001, 2, 10001, 1408, 10000, 10002, 10000),
-(10002, 4, 10001, 1408, 10000, 10002, 10000);
+(10002, 4, 10001, 1408, 10000, 10002, 10000),
+(10003, 3, 10001, 1408, 10000, 10006, 10000);
 
 -- --------------------------------------------------------
 
@@ -289,13 +291,13 @@ ALTER TABLE `boss_workinfo`
 -- 使用表AUTO_INCREMENT `boss_cominfo`
 --
 ALTER TABLE `boss_cominfo`
-  MODIFY `workComId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1409;
+  MODIFY `workComId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1410;
 
 --
 -- 使用表AUTO_INCREMENT `boss_offer`
 --
 ALTER TABLE `boss_offer`
-  MODIFY `workOfferId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10003;
+  MODIFY `workOfferId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10004;
 
 --
 -- 使用表AUTO_INCREMENT `boss_resume`
