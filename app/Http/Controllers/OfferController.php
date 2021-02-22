@@ -8,7 +8,7 @@ use App\api\Offer;
 class OfferController extends BaseController
 {
     /**
-     * 拒绝 沟通中 待面试 录用 收藏 的信息
+     *
      *
      * @return \Illuminate\Http\Response
      */
@@ -19,14 +19,30 @@ class OfferController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 投递简历，存储offer系列数据
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        // 验证 同工作不能多次投递
+        $test = Offer::where(array("userId" => $data["userId"], "workId" => $data["workId"]))->get()->toArray();
+
+        if (count($test) >= 1) {
+            return $this->create(0, "插入重复", 400);
+        }
+
+        $result = Offer::insert(array("workOfferType" => 1, "userId" => $data["userId"], "workComId" => $data["workComId"], "candId" => $data["candId"], "workId" => $data["workId"], "editorId" => $data["editorId"]));
+        if ($result > 0) {
+            return $this->create(1, "插入成功", 200);
+        } else {
+            return $this->create(0, "插入失败", 208);
+
+        }
+
     }
 
     /**
@@ -95,7 +111,7 @@ class OfferController extends BaseController
     }
 
     /**
-     * 用户 分类数据获取
+     * 用户 拒绝 沟通中 待面试 录用 收藏 分类数据获取
      * @param int $id
      * @param int $cateid
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
@@ -117,7 +133,7 @@ class OfferController extends BaseController
     }
 
     /**
-     * 企业 分类数据获取
+     * 企业 拒绝 沟通中 待面试 录用 收藏 分类数据获取
      * @param int $id
      * @param int $cateid
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
@@ -125,16 +141,16 @@ class OfferController extends BaseController
 
     public function comOfferCate($id, $cateid)
     {
-        if($cateid == 666){
+        if ($cateid == 666) {
             $queryArr = array("offer.workComId" => $id);
-        }else{
+        } else {
             $queryArr = array("offer.workComId" => $id, "workOfferType" => $cateid);
         }
 
         $data = Offer::where($queryArr)
             ->join("resume", "offer.candId", "resume.candId")
             ->join("workface", "offer.workId", "workface.workId")
-                ->select("offer.*", "workface.workTitle",'workface.workSalary', 'resume.name', 'resume.age', 'resume.school', 'resume.edu', 'resume.workExper')
+            ->select("offer.*", "workface.workTitle", 'workface.workSalary', 'resume.name', 'resume.age', 'resume.school', 'resume.edu', 'resume.workExper')
             ->get()->toArray();
 
         if (!empty($data)) {
@@ -153,8 +169,8 @@ class OfferController extends BaseController
     {
         $data = $req->all();
 
-        $result = Offer::where(array("workComId"=>$data["id"], "workOfferId"=>$data["workOfferId"]))
-            ->update(array("workOfferType"=>$data["typeId"]));
+        $result = Offer::where(array("workComId" => $data["id"], "workOfferId" => $data["workOfferId"]))
+            ->update(array("workOfferType" => $data["typeId"]));
 
         if (!empty($result)) {
             return $this->create(1, "修改成功", 200);

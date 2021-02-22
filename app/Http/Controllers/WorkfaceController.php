@@ -20,7 +20,7 @@ class WorkfaceController extends BaseController
         // 获取所有
         $workfaces = Workface::join('cominfo', 'workface.workComId', 'cominfo.workComId')
             ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
-            ->paginate(10)
+            ->paginate(3)
             ->toArray();
 
 //        dd($workfaces);
@@ -72,7 +72,7 @@ class WorkfaceController extends BaseController
         $workfaces = Workface::where("workface.workId",$id)
             ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
             ->join('workinfo','workface.workId','workinfo.workId')
-            ->select('workface.*', 'workinfo.workIntro','cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
+            ->select('workface.*', 'workinfo.workIntro','cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale', 'cominfo.workComCate')
             ->get()
             ->toArray();
 
