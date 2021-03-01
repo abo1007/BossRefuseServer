@@ -32,7 +32,7 @@ class OfferController extends BaseController
         $test = Offer::where(array("userId" => $data["userId"], "workId" => $data["workId"]))->get()->toArray();
 
         if (count($test) >= 1) {
-            return $this->create(0, "插入重复", 400);
+            return $this->create(0, "插入重复", 210);
         }
 
         $result = Offer::insert(array("workOfferType" => 1, "userId" => $data["userId"], "workComId" => $data["workComId"], "candId" => $data["candId"], "workId" => $data["workId"], "editorId" => $data["editorId"]));

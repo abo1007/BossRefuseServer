@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-02-22 07:35:45
+-- Generation Time: 2021-03-01 05:50:50
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -76,7 +76,8 @@ INSERT INTO `boss_offer` (`workOfferId`, `workOfferType`, `userId`, `workComId`,
 (10001, 2, 10001, 1408, 10000, 10002, 10000),
 (10002, 4, 10001, 1408, 10000, 10002, 10000),
 (10003, 3, 10001, 1408, 10000, 10006, 10000),
-(10004, 1, 10001, 1408, 10000, 10004, 10000);
+(10004, 1, 10001, 1408, 10000, 10004, 10000),
+(10005, 1, 10001, 1408, 10001, 10003, 10000);
 
 -- --------------------------------------------------------
 
@@ -134,8 +135,9 @@ CREATE TABLE `boss_user` (
 --
 
 INSERT INTO `boss_user` (`id`, `username`, `password`, `sex`, `regtime`, `phonenum`, `nickname`, `isvip`, `isCom`) VALUES
-(10000, 'yangbo', 'yangbo', 0, '2020-12-17 13:00:00', '15128659469', '麦克不可', 1, 1),
-(10001, 'abo1007', 'abo1007', 0, '2021-01-08 00:00:00', '15128659469', '来去之间', 1, 0);
+(10000, 'yangbo', 'yangbo', 0, '2000-10-07 00:00:00', '15128659469', '麦克不可', 1, 1),
+(10001, 'abo1007', 'abo1007', 0, '2021-01-08 00:00:00', '15128659469', '来去之间', 1, 0),
+(10002, 'yy1999', 'yueying', 1, '1999-12-25 00:00:00', '16666666666', '风渐渐', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -200,20 +202,21 @@ CREATE TABLE `boss_workface` (
   `workComId` int(8) NOT NULL,
   `workTag` varchar(200) COLLATE utf8mb4_bin NOT NULL,
   `workPublisher` varchar(100) COLLATE utf8mb4_bin NOT NULL,
-  `workCateId` int(3) NOT NULL
+  `workCateId` int(3) NOT NULL,
+  `workPublisherId` int(8) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- 转存表中的数据 `boss_workface`
 --
 
-INSERT INTO `boss_workface` (`workId`, `workTitle`, `workSalary`, `workComId`, `workTag`, `workPublisher`, `workCateId`) VALUES
-(10001, '全栈工程师', '1-2K', 1408, '硕士，3-5年，Vue，Java', '刘先生·人事', 106),
-(10002, '产品经理', '0.5-1.5K', 1408, '本科，1-3年，弹性工作，大牛云集', '刘先生·人事', 201),
-(10003, 'UI设计师', '6-10k', 1408, '本科，3年，Ps，Ai', '人事·老王', 301),
-(10004, 'Java架构师', '30-60k', 1408, '本科，5-10年，985/211，Java', '人事·老王', 101),
-(10005, '前端工程师', '6-8k', 1408, '硕士，5-10年，五险一金，996', '人事·老王', 102),
-(10006, '电商运营', '2-4k', 1408, '高中/中专/职高，1年以内，弹性工作', '人事·老王', 401);
+INSERT INTO `boss_workface` (`workId`, `workTitle`, `workSalary`, `workComId`, `workTag`, `workPublisher`, `workCateId`, `workPublisherId`) VALUES
+(10001, '全栈工程师', '1-2K', 1408, '硕士，3-5年，Vue，Java', '刘先生·人事', 106, 10000),
+(10002, '产品经理', '0.5-1.5K', 1408, '本科，1-3年，弹性工作，大牛云集', '刘先生·人事', 201, 10000),
+(10003, 'UI设计师', '6-10k', 1408, '本科，3年，Ps，Ai', '人事·老王', 301, 10000),
+(10004, 'Java架构师', '30-60k', 1408, '本科，5-10年，985/211，Java', '人事·老王', 101, 10000),
+(10005, '前端工程师', '6-8k', 1408, '硕士，5-10年，五险一金，996', '人事·老王', 102, 10000),
+(10006, '电商运营', '2-4k', 1408, '高中/中专/职高，1年以内，弹性工作', '人事·老王', 401, 10000);
 
 -- --------------------------------------------------------
 
@@ -298,7 +301,7 @@ ALTER TABLE `boss_cominfo`
 -- 使用表AUTO_INCREMENT `boss_offer`
 --
 ALTER TABLE `boss_offer`
-  MODIFY `workOfferId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10005;
+  MODIFY `workOfferId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10006;
 
 --
 -- 使用表AUTO_INCREMENT `boss_resume`
@@ -310,7 +313,7 @@ ALTER TABLE `boss_resume`
 -- 使用表AUTO_INCREMENT `boss_user`
 --
 ALTER TABLE `boss_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10002;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10003;
 
 --
 -- 使用表AUTO_INCREMENT `boss_workface`

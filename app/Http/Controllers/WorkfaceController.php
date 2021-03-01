@@ -76,9 +76,7 @@ class WorkfaceController extends BaseController
             ->get()
             ->toArray();
 
-
         $workfaces = $this->workTagsToArr($workfaces);
-
 
         if (empty($workfaces)) {
             return $this->create([], "无数据", 204);

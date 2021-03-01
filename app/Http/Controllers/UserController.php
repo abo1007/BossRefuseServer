@@ -28,6 +28,17 @@ class UserController extends BaseController
      */
     public function store(Request $request)
     {
+        $data = $request->all();
+        date_default_timezone_set("PRC");
+        $time = date("Y-m-d H:i:s", time());
+        $res = User::insert(array("username" => $data["username"], "password" => $data["password"], "sex" => $data["sex"],
+            "regtime" => $time, "phonenum" => $data["phonenum"], "nickname" => $data["nickname"], "isvip" => 0, "isCom" => $data["isCom"]));
+
+        if ($res > 0) {
+            return $this->create(1, "插入成功", 200);
+        } else {
+            return $this->create(0, "插入失败", 208);
+        }
 
     }
 
