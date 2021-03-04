@@ -37,8 +37,8 @@ Route::post('user/loginfree','UserController@loginFree') -> name('user.loginfree
 Route::post('user/updatepass','UserController@updatePass') -> name('user.updatepass');
 // 注册用户
 Route::post('user/reguser','UserController@registerUser') -> name('user.reguser');
-
-
+// 获得昵称
+Route::get('user/getnickname/{id}','UserController@nickname') -> name('user.nickname');
 
 
 Route::apiResource('offer','OfferController');

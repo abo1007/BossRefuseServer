@@ -29,6 +29,13 @@ class UserController extends BaseController
     public function store(Request $request)
     {
         $data = $request->all();
+
+        $queryRes = User::where("username", $data["username"])->get()->toArray();
+
+        if (!empty($queryRes)) {
+            return $this->create(0, "用户名重复", 208);
+        }
+
         date_default_timezone_set("PRC");
         $time = date("Y-m-d H:i:s", time());
         $res = User::insert(array("username" => $data["username"], "password" => $data["password"], "sex" => $data["sex"],
@@ -37,7 +44,7 @@ class UserController extends BaseController
         if ($res > 0) {
             return $this->create(1, "插入成功", 200);
         } else {
-            return $this->create(0, "插入失败", 208);
+            return $this->create(0, "插入失败", 400);
         }
 
     }
@@ -51,6 +58,9 @@ class UserController extends BaseController
     public function show($id)
     {
         //
+        $res = User::where("id",$id)->get()->toArray();
+        $res[0]["password"] = "";
+        return $this->create($res[0],"获取成功",200);
     }
 
     /**
@@ -161,5 +171,16 @@ class UserController extends BaseController
 
         return $this->create([], "未开放此API", 400);
 
+    }
+
+    /**
+     * 获得昵称
+     * @param $id
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function nickname($id)
+    {
+        $res = User::where("id", $id)->select("nickname")->get()->toArray();
+        return $this->create($res[0], "获取成功", 200);
     }
 }
