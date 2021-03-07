@@ -17,6 +17,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
+Route::any('unAuth', function () {
+    return responseToJson(1,'未认证或认证失败');
+})->name('unAuth');
+
+Route::prefix('admin')->namespace('Admin')->group(function() {
+    Route::post('login', 'LoginController@login');
+    Route::middleware('auth:admin')->group(function() {
+        Route::post('logout', 'LoginController@logout');
+        Route::get('getMenu', 'MenuController@getMenu');
+    });
+});
+
 Route::apiResource('workface','WorkfaceController');
 
 // 工作数据标题 分类
@@ -58,3 +71,5 @@ Route::apiResource('resume','ResumeController');
 
 // 企业信息
 Route::apiResource('cominfo','CominfoController');
+
+Route::get('getsha','UserController@getsha');

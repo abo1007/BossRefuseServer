@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\api\Workface;
 use Illuminate\Http\Request;
 use App\api\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class UserController extends BaseController
 {
@@ -38,13 +40,15 @@ class UserController extends BaseController
 
         date_default_timezone_set("PRC");
         $time = date("Y-m-d H:i:s", time());
+        $token = $this->getsha();
         $res = User::insert(array("username" => $data["username"], "password" => $data["password"], "sex" => $data["sex"],
-            "regtime" => $time, "phonenum" => $data["phonenum"], "nickname" => $data["nickname"], "isvip" => 0, "isCom" => $data["isCom"]));
+            "regtime" => $time, "phonenum" => $data["phonenum"], "nickname" => $data["nickname"], "isvip" => 0,
+            "isCom" => $data["isCom"], "api_token"=>$token));
 
         if ($res > 0) {
             return $this->create(1, "插入成功", 200);
         } else {
-            return $this->create(0, "插入失败", 400);
+            return $this->create(0, "插入失败", 208);
         }
 
     }
@@ -58,9 +62,9 @@ class UserController extends BaseController
     public function show($id)
     {
         //
-        $res = User::where("id",$id)->get()->toArray();
+        $res = User::where("id", $id)->get()->toArray();
         $res[0]["password"] = "";
-        return $this->create($res[0],"获取成功",200);
+        return $this->create($res[0], "获取成功", 200);
     }
 
     /**
@@ -73,6 +77,13 @@ class UserController extends BaseController
     public function update(Request $request, $id)
     {
         //
+        $data = $request->all();
+        $res = User::where("id", $id)->update(array("phonenum" => $data["phonenum"], "sex" => $data["sex"], "nickname" => $data["nickname"]));
+        if ($res > 0) {
+            return $this->create(1, "修改成功", 200);
+        } else {
+            return $this->create(0, "修改失败", 208);
+        }
     }
 
     /**
@@ -113,11 +124,12 @@ class UserController extends BaseController
 
             if (!empty($resid[0])) {
 
-                $res = User::select("password")->where("id", $resid[0]["id"])->get();
-                $res = $res[0]["password"];
+                $res = User::select("password","api_token")->where("id", $resid[0]["id"])->get()->toArray();
+                $pass = $res[0]["password"];
+                $token = $res[0]["api_token"];
+                if ($pass == $data["password"]) {
 
-                if ($res == $data["password"]) {
-                    return $this->create(["id" => $resid[0]["id"], "username" => $data["username"]], "用户登录成功", 200);
+                    return $this->create(["id" => $resid[0]["id"], "username" => $data["username"],"token"=>$token], "用户登录成功", 200);
                 } else {
                     return $this->create([], "密码不正确", 302);
                 }
@@ -183,4 +195,10 @@ class UserController extends BaseController
         $res = User::where("id", $id)->select("nickname")->get()->toArray();
         return $this->create($res[0], "获取成功", 200);
     }
+
+
+    public function getsha(){
+        return Str::random(60);
+    }
+
 }

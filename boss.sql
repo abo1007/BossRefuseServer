@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-03-01 05:50:50
+-- Generation Time: 2021-03-05 16:00:33
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -48,7 +48,7 @@ CREATE TABLE `boss_cominfo` (
 --
 
 INSERT INTO `boss_cominfo` (`workComId`, `workComName`, `workComPerson`, `workComAllName`, `workComScale`, `workComDate`, `workComCate`, `workComTag`, `workComCity`, `workComArea`, `workComIntro`, `workComCap`) VALUES
-(1408, '白嫖科技', '杰克马', '南京市白嫖科技发展有限公司', '0-9', '2010-01-01', '互联网', '朝八晚六，收费零食，自费团建', '南京市', '鼓楼区', '这个公司很懒，什么都没有留下', 1),
+(1408, '白嫖科技', '杰克马', '南京市白嫖科技发展有限公司', '10-19', '2010-01-01', '互联网', '朝八晚六，收费零食，自费团建', '南京市', '鼓楼区', '这个公司很懒，什么都没有留下', 1),
 (1409, '巴里阿阿', '马不兴', '巴里阿阿(北京)有限公司', '500', '2002-01-01', '互联网/科技', '节假双休，下午茶，零食水果，弹性工作，员工餐', '北京市', '海淀区', '巴里阿阿集团的宗旨是让天下没有好做的生意', 10000);
 
 -- --------------------------------------------------------
@@ -137,7 +137,8 @@ CREATE TABLE `boss_user` (
 INSERT INTO `boss_user` (`id`, `username`, `password`, `sex`, `regtime`, `phonenum`, `nickname`, `isvip`, `isCom`) VALUES
 (10000, 'yangbo', 'yangbo', 0, '2000-10-07 00:00:00', '15128659469', '麦克不可', 1, 1),
 (10001, 'abo1007', 'abo1007', 0, '2021-01-08 00:00:00', '15128659469', '来去之间', 1, 0),
-(10002, 'yy1999', 'yueying', 1, '1999-12-25 00:00:00', '16666666666', '风渐渐', 0, 0);
+(10002, 'yy1999', 'yueying', 1, '1999-12-25 00:00:00', '16666666666', '风渐渐', 0, 0),
+(10003, 'cai2002', 'caidatou', 0, '2021-03-01 15:33:54', '15631650688', '蔡大头头', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -313,7 +314,7 @@ ALTER TABLE `boss_resume`
 -- 使用表AUTO_INCREMENT `boss_user`
 --
 ALTER TABLE `boss_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10003;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10004;
 
 --
 -- 使用表AUTO_INCREMENT `boss_workface`
