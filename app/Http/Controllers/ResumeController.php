@@ -97,4 +97,19 @@ class ResumeController extends BaseController
     {
         //
     }
+
+    /**
+     * 通过用户ID查找简历ID
+     * @param $id
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function getResumeID($id){
+        $res = Resume::where("userId",$id)->get()->toArray();
+
+        if(count($res) > 0){
+            return $this->create(array("id"=>$id,"candId"=>$res[0]["candId"]),"获取成功",200);
+        }else{
+            return $this->create(0,"无简历",400);
+        }
+    }
 }

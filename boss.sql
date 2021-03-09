@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-03-05 16:00:33
+-- Generation Time: 2021-03-09 08:18:58
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -127,18 +127,20 @@ CREATE TABLE `boss_user` (
   `phonenum` varchar(12) COLLATE utf8mb4_bin NOT NULL,
   `nickname` varchar(200) COLLATE utf8mb4_bin NOT NULL,
   `isvip` int(1) NOT NULL DEFAULT '0',
-  `isCom` int(1) NOT NULL DEFAULT '0'
+  `isCom` int(1) NOT NULL DEFAULT '0',
+  `api_token` varchar(200) COLLATE utf8mb4_bin NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- 转存表中的数据 `boss_user`
 --
 
-INSERT INTO `boss_user` (`id`, `username`, `password`, `sex`, `regtime`, `phonenum`, `nickname`, `isvip`, `isCom`) VALUES
-(10000, 'yangbo', 'yangbo', 0, '2000-10-07 00:00:00', '15128659469', '麦克不可', 1, 1),
-(10001, 'abo1007', 'abo1007', 0, '2021-01-08 00:00:00', '15128659469', '来去之间', 1, 0),
-(10002, 'yy1999', 'yueying', 1, '1999-12-25 00:00:00', '16666666666', '风渐渐', 0, 0),
-(10003, 'cai2002', 'caidatou', 0, '2021-03-01 15:33:54', '15631650688', '蔡大头头', 0, 0);
+INSERT INTO `boss_user` (`id`, `username`, `password`, `sex`, `regtime`, `phonenum`, `nickname`, `isvip`, `isCom`, `api_token`) VALUES
+(10000, 'yangbo', 'yangbo', 0, '2000-10-07 00:00:00', '15128659469', '麦克不可', 1, 1, '7dvwPHRs4vq8w8t670KiVPwkrDD7BNPPmEaibfLDwAlQdJj3kQWzRV3KBpIE'),
+(10001, 'abo1007', 'abo1007', 0, '2021-01-08 00:00:00', '15128659469', '来去之间', 1, 0, 'DeXjuGFFG94UYkCVYPS87lfLjoYdOuxT0CZrL7hibHACzCk8jI4durYrUS5p'),
+(10002, 'yy1999', 'yueying', 1, '1999-12-25 00:00:00', '16666666666', '风渐渐', 0, 0, 'tbeoqUPAPwPT6VByD3SxNb8WK5v94euDlxWsewEwqSCdnD8JapspxFSyP0FZ'),
+(10003, 'cai2002', 'caidatou', 0, '2021-03-01 15:33:54', '15631650688', '蔡大头头', 0, 0, 'dS2EO1X8C4IF63ac6QRzBmAqQt4GrbAjgiG6e9wrn2j4SGn1gpiVRAqVEiYb'),
+(10004, 'java666', '12345678', 0, '2021-03-06 21:10:01', '01012345678', 'Java天下第一', 0, 0, 'WXwG36Y8V3zEHfJitG6H9IvrdRKBbgD1TeTN1WfEv7meLOpkPJViqXb79ZL8');
 
 -- --------------------------------------------------------
 
@@ -314,7 +316,7 @@ ALTER TABLE `boss_resume`
 -- 使用表AUTO_INCREMENT `boss_user`
 --
 ALTER TABLE `boss_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10004;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10005;
 
 --
 -- 使用表AUTO_INCREMENT `boss_workface`

@@ -17,19 +17,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::any('unAuth', function () {
-    return responseToJson(1,'未认证或认证失败');
-})->name('unAuth');
-
-Route::prefix('admin')->namespace('Admin')->group(function() {
-    Route::post('login', 'LoginController@login');
-    Route::middleware('auth:admin')->group(function() {
-        Route::post('logout', 'LoginController@logout');
-        Route::get('getMenu', 'MenuController@getMenu');
-    });
-});
-
 Route::apiResource('workface','WorkfaceController');
 
 // 工作数据标题 分类
@@ -62,14 +49,16 @@ Route::post('offer/getcount','OfferController@count') -> name('offer.count');
 // 拒绝 沟通中 待面试 录用 收藏 各类信息
 Route::get('offer/getcate/{id}/{cateid}','OfferController@offerCate') -> name('offer.cate');
 Route::get('offer/getcomcate/{id}/{cateid}','OfferController@comOfferCate') -> name('offer.comCate');
-
+// 更新offer状态
 Route::post('offer/updatetype','OfferController@comUpdateOfferType') -> name('offer.updateType');
 
 
 // 简历功能
 Route::apiResource('resume','ResumeController');
+// 通过id获得简历id
+Route::get('resume/getresumeid/{id}','ResumeController@getResumeID') -> name('resume.getid');
 
 // 企业信息
 Route::apiResource('cominfo','CominfoController');
-
+// 获取一段60位随机字符串
 Route::get('getsha','UserController@getsha');

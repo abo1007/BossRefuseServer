@@ -43,7 +43,7 @@ class UserController extends BaseController
         $token = $this->getsha();
         $res = User::insert(array("username" => $data["username"], "password" => $data["password"], "sex" => $data["sex"],
             "regtime" => $time, "phonenum" => $data["phonenum"], "nickname" => $data["nickname"], "isvip" => 0,
-            "isCom" => $data["isCom"], "api_token"=>$token));
+            "isCom" => $data["isCom"], "api_token" => $token));
 
         if ($res > 0) {
             return $this->create(1, "插入成功", 200);
@@ -124,12 +124,12 @@ class UserController extends BaseController
 
             if (!empty($resid[0])) {
 
-                $res = User::select("password","api_token")->where("id", $resid[0]["id"])->get()->toArray();
+                $res = User::select("password", "api_token")->where("id", $resid[0]["id"])->get()->toArray();
                 $pass = $res[0]["password"];
                 $token = $res[0]["api_token"];
                 if ($pass == $data["password"]) {
 
-                    return $this->create(["id" => $resid[0]["id"], "username" => $data["username"],"token"=>$token], "用户登录成功", 200);
+                    return $this->create(["id" => $resid[0]["id"], "username" => $data["username"], "token" => $token], "用户登录成功", 200);
                 } else {
                     return $this->create([], "密码不正确", 302);
                 }
@@ -197,7 +197,8 @@ class UserController extends BaseController
     }
 
 
-    public function getsha(){
+    public function getsha()
+    {
         return Str::random(60);
     }
 
