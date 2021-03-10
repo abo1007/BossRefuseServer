@@ -71,6 +71,10 @@ DB_PASSWORD=mysql密码
 1. 建立一个名为 `boss` 的数据库
 2. 将根目录下面的 `boss.sql` 文件导入到库中
 
+### 安装依赖
+
+> composer install
+
 ### 启动方式1 Apache
 
 1. 将项目本身放置在Apache站点目录中
