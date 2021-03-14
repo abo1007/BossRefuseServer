@@ -60,7 +60,11 @@ class CominfoController extends BaseController
     public function show($id)
     {
         $data = Cominfo::where("workComId", $id)->get()->toArray();
-        return $this->create($data[0], "数据获取成功", 200);
+        if(count($data) == 0){
+            return $this->create([], "无数据", 400);
+        }else{
+            return $this->create($data[0], "数据获取成功", 200);
+        }
     }
 
     /**

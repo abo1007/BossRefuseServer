@@ -23,7 +23,7 @@ class UserController extends BaseController
     }
 
     /**
-     * Store a newly created resource in storage.
+     * 注册用户
      *
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
@@ -41,7 +41,7 @@ class UserController extends BaseController
         date_default_timezone_set("PRC");
         $time = date("Y-m-d H:i:s", time());
         $token = $this->getsha();
-        $res = User::insert(array("username" => $data["username"], "password" => $data["password"], "sex" => $data["sex"],
+        $res = User::insert(array("username" => $data["username"], "password" => md5($data["password"]), "sex" => $data["sex"],
             "regtime" => $time, "phonenum" => $data["phonenum"], "nickname" => $data["nickname"], "isvip" => 0,
             "isCom" => $data["isCom"], "api_token" => $token));
 
@@ -124,12 +124,21 @@ class UserController extends BaseController
 
             if (!empty($resid[0])) {
 
-                $res = User::select("password", "api_token")->where("id", $resid[0]["id"])->get()->toArray();
+                $res = User::select("password", "api_token", "nickname", "spareId")->where("id", $resid[0]["id"])->get()->toArray();
                 $pass = $res[0]["password"];
                 $token = $res[0]["api_token"];
-                if ($pass == $data["password"]) {
+                if ($pass == md5($data["password"])) {
 
-                    return $this->create(["id" => $resid[0]["id"], "username" => $data["username"], "token" => $token], "用户登录成功", 200);
+                    if($data['mode'] == 0){
+
+                        return $this->create(["id" => $resid[0]["id"], "username" => $data["username"], "nickname" => $res[0]["nickname"], "token" => $token], "用户登录成功", 200);
+
+                    }else{
+
+                        return $this->create(["id" => $resid[0]["id"], "username" => $data["username"], "nickname" => $res[0]["nickname"], "comId" => $res[0]["spareId"], "token" => $token], "用户登录成功", 200);
+
+                    }
+
                 } else {
                     return $this->create([], "密码不正确", 302);
                 }
@@ -173,17 +182,6 @@ class UserController extends BaseController
 
     }
 
-    /**
-     * 注册用户功能
-     * @param Request $req
-     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
-     */
-    public function registerUser(Request $req)
-    {
-
-        return $this->create([], "未开放此API", 400);
-
-    }
 
     /**
      * 获得昵称
@@ -201,5 +199,6 @@ class UserController extends BaseController
     {
         return Str::random(60);
     }
+
 
 }

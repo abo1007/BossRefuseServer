@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-03-09 08:18:58
+-- Generation Time: 2021-03-14 05:28:48
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -128,19 +128,21 @@ CREATE TABLE `boss_user` (
   `nickname` varchar(200) COLLATE utf8mb4_bin NOT NULL,
   `isvip` int(1) NOT NULL DEFAULT '0',
   `isCom` int(1) NOT NULL DEFAULT '0',
-  `api_token` varchar(200) COLLATE utf8mb4_bin NOT NULL
+  `api_token` varchar(200) COLLATE utf8mb4_bin NOT NULL,
+  `spareId` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 --
 -- 转存表中的数据 `boss_user`
 --
 
-INSERT INTO `boss_user` (`id`, `username`, `password`, `sex`, `regtime`, `phonenum`, `nickname`, `isvip`, `isCom`, `api_token`) VALUES
-(10000, 'yangbo', 'yangbo', 0, '2000-10-07 00:00:00', '15128659469', '麦克不可', 1, 1, '7dvwPHRs4vq8w8t670KiVPwkrDD7BNPPmEaibfLDwAlQdJj3kQWzRV3KBpIE'),
-(10001, 'abo1007', 'abo1007', 0, '2021-01-08 00:00:00', '15128659469', '来去之间', 1, 0, 'DeXjuGFFG94UYkCVYPS87lfLjoYdOuxT0CZrL7hibHACzCk8jI4durYrUS5p'),
-(10002, 'yy1999', 'yueying', 1, '1999-12-25 00:00:00', '16666666666', '风渐渐', 0, 0, 'tbeoqUPAPwPT6VByD3SxNb8WK5v94euDlxWsewEwqSCdnD8JapspxFSyP0FZ'),
-(10003, 'cai2002', 'caidatou', 0, '2021-03-01 15:33:54', '15631650688', '蔡大头头', 0, 0, 'dS2EO1X8C4IF63ac6QRzBmAqQt4GrbAjgiG6e9wrn2j4SGn1gpiVRAqVEiYb'),
-(10004, 'java666', '12345678', 0, '2021-03-06 21:10:01', '01012345678', 'Java天下第一', 0, 0, 'WXwG36Y8V3zEHfJitG6H9IvrdRKBbgD1TeTN1WfEv7meLOpkPJViqXb79ZL8');
+INSERT INTO `boss_user` (`id`, `username`, `password`, `sex`, `regtime`, `phonenum`, `nickname`, `isvip`, `isCom`, `api_token`, `spareId`) VALUES
+(10000, 'yangbo', '0ef9daeb0937a0860b860c36cecf82b6', 0, '2000-10-07 00:00:00', '15128659469', '麦克不可', 1, 1, '7dvwPHRs4vq8w8t670KiVPwkrDD7BNPPmEaibfLDwAlQdJj3kQWzRV3KBpIE', 1408),
+(10001, 'abo1007', 'd20a1a6d16a1141d751c8fb7b3b4c3b1', 0, '2021-01-08 00:00:00', '15128659469', '来去之间', 1, 0, 'DeXjuGFFG94UYkCVYPS87lfLjoYdOuxT0CZrL7hibHACzCk8jI4durYrUS5p', NULL),
+(10002, 'yy1999', '351bb4ff533ae6e152d1db78550f8996', 1, '1999-12-25 00:00:00', '16666666666', '风渐渐', 0, 0, 'tbeoqUPAPwPT6VByD3SxNb8WK5v94euDlxWsewEwqSCdnD8JapspxFSyP0FZ', NULL),
+(10003, 'cai2002', 'e5bb37a5d9cf89ce660dad2f4bf836d7', 0, '2021-03-01 15:33:54', '15631650688', '蔡大头头', 0, 0, 'dS2EO1X8C4IF63ac6QRzBmAqQt4GrbAjgiG6e9wrn2j4SGn1gpiVRAqVEiYb', NULL),
+(10004, 'java666', '25d55ad283aa400af464c76d713c07ad', 0, '2021-03-06 21:10:01', '01012345678', 'Java天下第一', 0, 0, 'WXwG36Y8V3zEHfJitG6H9IvrdRKBbgD1TeTN1WfEv7meLOpkPJViqXb79ZL8', NULL),
+(10005, 'sudoroot', '0ef9daeb0937a0860b860c36cecf82b6', 0, '2021-03-10 21:09:33', '13833616001', '阿波科技', 0, 1, 'ogbUWM0CY1KSCe0sYNzdhAQW4B7C95EchSQdDT6LbLMocUiRIKm7oB1N44Gl', 1409);
 
 -- --------------------------------------------------------
 
@@ -316,7 +318,7 @@ ALTER TABLE `boss_resume`
 -- 使用表AUTO_INCREMENT `boss_user`
 --
 ALTER TABLE `boss_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10005;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10006;
 
 --
 -- 使用表AUTO_INCREMENT `boss_workface`
