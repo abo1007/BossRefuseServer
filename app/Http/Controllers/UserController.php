@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\api\Workface;
+use App\api\Resume;
 use Illuminate\Http\Request;
 use App\api\User;
 use Illuminate\Support\Facades\Hash;
@@ -12,14 +13,15 @@ use Illuminate\Support\Str;
 class UserController extends BaseController
 {
     /**
-     * Display a listing of the resource.
+     * 服务器状态验证API
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
-        return $this->create([], "未开放此API", 700);
+        date_default_timezone_set("PRC");
+        $time = date("Y-m-d H:i:s", time());
+        return $this->create(array("time" => $time), "服务器状态正常", 200);
     }
 
     /**
@@ -120,33 +122,28 @@ class UserController extends BaseController
             // 取得结果集 提高效率 只取id字段
             $resid = User::select("id")->where($loginData)->get();
 
-//            dd($resid);
-
-            if (!empty($resid[0])) {
-
-                $res = User::select("password", "api_token", "nickname", "spareId")->where("id", $resid[0]["id"])->get()->toArray();
-                $pass = $res[0]["password"];
-                $token = $res[0]["api_token"];
-                if ($pass == md5($data["password"])) {
-
-                    if($data['mode'] == 0){
-
-                        return $this->create(["id" => $resid[0]["id"], "username" => $data["username"], "nickname" => $res[0]["nickname"], "token" => $token], "用户登录成功", 200);
-
-                    }else{
-
-                        return $this->create(["id" => $resid[0]["id"], "username" => $data["username"], "nickname" => $res[0]["nickname"], "comId" => $res[0]["spareId"], "token" => $token], "用户登录成功", 200);
-
-                    }
-
-                } else {
-                    return $this->create([], "密码不正确", 302);
-                }
-
-            } else {
+            if (empty($resid[0])) {
                 return $this->create([], "用户不存在", 301);
             }
 
+            $res = User::select("password", "api_token", "nickname", "spareId")->where("id", $resid[0]["id"])->get()->toArray();
+            $pass = $res[0]["password"];
+            $token = $res[0]["api_token"];
+
+            if ($pass !== md5($data["password"])) {
+                return $this->create([], "密码不正确", 302);
+            }
+
+            if ($data['mode'] == 0) {
+                $candid = Resume::select("candId")->where("userId", $resid[0]["id"])->get()->toArray();
+                if (empty($candid)) {
+                    return $this->create(["id" => $resid[0]["id"], "username" => $data["username"], "nickname" => $res[0]["nickname"], "candId" => 0, "token" => $token], "用户登录成功", 200);
+                }
+                return $this->create(["id" => $resid[0]["id"], "username" => $data["username"], "nickname" => $res[0]["nickname"], "candId" => $candid[0]["candId"], "token" => $token], "用户登录成功", 200);
+
+            } else {
+                return $this->create(["id" => $resid[0]["id"], "username" => $data["username"], "nickname" => $res[0]["nickname"], "comId" => $res[0]["spareId"], "token" => $token], "用户登录成功", 200);
+            }
         }
     }
 
