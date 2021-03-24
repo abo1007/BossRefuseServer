@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\api\User;
 use Illuminate\Http\Request;
 use App\api\Cominfo;
 
@@ -21,7 +22,7 @@ class CominfoController extends BaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,10 +42,11 @@ class CominfoController extends BaseController
             "workComIntro" => $data["workComIntro"],
             "workComCap" => $data["workComCap"]);
 
-        $isTrue = Cominfo::insert($sqlWriteData);
+        $res = Cominfo::insertGetId($sqlWriteData);
 
-        if ($isTrue) {
-            return $this->create(1, "数据插入成功", 200);
+        if ($res) {
+            User::where("id", $data["userId"])->update(array("spareId" => $res));
+            return $this->create($res, "数据插入成功", 200);
         } else {
             return $this->create(0, "数据插入失败", 208);
         }
@@ -54,15 +56,15 @@ class CominfoController extends BaseController
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $data = Cominfo::where("workComId", $id)->get()->toArray();
-        if(count($data) == 0){
+        if (count($data) == 0) {
             return $this->create([], "无数据", 400);
-        }else{
+        } else {
             return $this->create($data[0], "数据获取成功", 200);
         }
     }
@@ -70,8 +72,8 @@ class CominfoController extends BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -94,7 +96,7 @@ class CominfoController extends BaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-03-20 07:04:39
+-- Generation Time: 2021-03-24 13:39:41
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -49,7 +49,10 @@ CREATE TABLE `boss_cominfo` (
 
 INSERT INTO `boss_cominfo` (`workComId`, `workComName`, `workComPerson`, `workComAllName`, `workComScale`, `workComDate`, `workComCate`, `workComTag`, `workComCity`, `workComArea`, `workComIntro`, `workComCap`) VALUES
 (1408, '白嫖科技', '杰克马', '南京市白嫖科技发展有限公司', '10-19', '2010-01-01', '互联网', '朝八晚六，收费零食，自费团建', '南京市', '鼓楼区', '这个公司很懒，什么都没有留下', 1),
-(1409, '巴里阿阿', '马不兴', '巴里阿阿(北京)有限公司', '500', '2002-01-01', '互联网/科技', '节假双休，下午茶，零食水果，弹性工作，员工餐', '北京市', '海淀区', '巴里阿阿集团的宗旨是让天下没有好做的生意', 10000);
+(1409, '巴里阿阿', '马不兴', '巴里阿阿(北京)有限公司', '500', '2002-01-01', '互联网/科技', '节假双休，下午茶，零食水果，弹性工作，员工餐', '北京市', '海淀区', '巴里阿阿集团的宗旨是让天下没有好做的生意', 10000),
+(1410, '阿波科技', '阿波', '阿波科技（北京）有限公司', '500+', '2021-01-01', '互联网', '五险一金，十三薪，带薪年假', '北京市', '上地', '变化的世界，不变的我们', 1),
+(1411, '阿波科技', '阿波', '阿波科技（北京）有限公司', '500+', '2021-01-01', '互联网', '五险一金，十三薪，带薪年假', '北京市', '上地', '变化的世界，不变的我们', 1),
+(1412, '测试3', '测试', '测试数据', '0-9', '2021-03-24', '电子商务', '五险一金', '北京市', '测试', '测试111', 1);
 
 -- --------------------------------------------------------
 
@@ -142,7 +145,7 @@ INSERT INTO `boss_user` (`id`, `username`, `password`, `sex`, `regtime`, `phonen
 (10002, 'yy1999', '351bb4ff533ae6e152d1db78550f8996', 1, '1999-12-25 00:00:00', '16666666666', '风渐渐', 0, 0, 'tbeoqUPAPwPT6VByD3SxNb8WK5v94euDlxWsewEwqSCdnD8JapspxFSyP0FZ', NULL),
 (10003, 'cai2002', 'e5bb37a5d9cf89ce660dad2f4bf836d7', 0, '2021-03-01 15:33:54', '15631650688', '蔡大头头', 0, 0, 'dS2EO1X8C4IF63ac6QRzBmAqQt4GrbAjgiG6e9wrn2j4SGn1gpiVRAqVEiYb', NULL),
 (10004, 'java666', '25d55ad283aa400af464c76d713c07ad', 0, '2021-03-06 21:10:01', '01012345678', 'Java天下第一', 0, 0, 'WXwG36Y8V3zEHfJitG6H9IvrdRKBbgD1TeTN1WfEv7meLOpkPJViqXb79ZL8', NULL),
-(10005, 'sudoroot', '0ef9daeb0937a0860b860c36cecf82b6', 0, '2021-03-10 21:09:33', '13833616001', '阿波科技', 0, 1, 'ogbUWM0CY1KSCe0sYNzdhAQW4B7C95EchSQdDT6LbLMocUiRIKm7oB1N44Gl', 1409);
+(10005, 'sudoroot', '0ef9daeb0937a0860b860c36cecf82b6', 0, '2021-03-10 21:09:33', '13833616001', '阿波科技', 0, 1, 'ogbUWM0CY1KSCe0sYNzdhAQW4B7C95EchSQdDT6LbLMocUiRIKm7oB1N44Gl', 1412);
 
 -- --------------------------------------------------------
 
@@ -300,7 +303,7 @@ ALTER TABLE `boss_workinfo`
 -- 使用表AUTO_INCREMENT `boss_cominfo`
 --
 ALTER TABLE `boss_cominfo`
-  MODIFY `workComId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1410;
+  MODIFY `workComId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1413;
 
 --
 -- 使用表AUTO_INCREMENT `boss_offer`
