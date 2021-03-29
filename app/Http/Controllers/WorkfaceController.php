@@ -213,6 +213,26 @@ class WorkfaceController extends BaseController
     }
 
     /**
+     * 搜索职位数据
+     * @param $searchValue
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function searchTitle($searchValue) {
+
+        $res = Workface::where("workTitle","like",'%'.$searchValue.'%')
+            ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
+            ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
+            ->get()->toArray();
+
+        if(count($res)){
+            return $this->create($res, "数据请求成功", 200);
+        }else{
+            return $this->create([], "无数据", 204);
+        }
+
+    }
+
+    /**
      * tag字段转换数组
      * @param $workfaces
      * @return array

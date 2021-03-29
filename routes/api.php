@@ -26,6 +26,8 @@ Route::get('workface/subcate/{cateid}','WorkfaceController@subclassify') -> name
 Route::get('workface/subcates/{cateid}','WorkfaceController@subclassifys') -> name('workface.subcates');
 // 企业发布的招聘信息
 Route::get('workface/com/{comid}','WorkfaceController@comShow') -> name('workface.comShow');
+// 搜索职位数据
+Route::get('workface/search/{searchValue}','WorkfaceController@searchTitle') -> name('workface.search');
 
 
 Route::apiResource("user",'UserController');
