@@ -128,7 +128,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../xampp/htdocs/laravel" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -245,6 +245,8 @@
       <workItem from="1616425667181" duration="183000" />
       <workItem from="1616579861383" duration="5733000" />
       <workItem from="1616938523523" duration="2897000" />
+      <workItem from="1617280094749" duration="1050000" />
+      <workItem from="1617784155631" duration="3158000" />
     </task>
     <servers />
   </component>
@@ -252,6 +254,10 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1617280542562">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1617280542562" />
     <state x="681" y="162" key="SettingsEditor" timestamp="1616579903582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
