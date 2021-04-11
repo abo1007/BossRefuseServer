@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-03-24 13:39:41
+-- Generation Time: 2021-04-08 16:20:05
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -53,6 +53,33 @@ INSERT INTO `boss_cominfo` (`workComId`, `workComName`, `workComPerson`, `workCo
 (1410, '阿波科技', '阿波', '阿波科技（北京）有限公司', '500+', '2021-01-01', '互联网', '五险一金，十三薪，带薪年假', '北京市', '上地', '变化的世界，不变的我们', 1),
 (1411, '阿波科技', '阿波', '阿波科技（北京）有限公司', '500+', '2021-01-01', '互联网', '五险一金，十三薪，带薪年假', '北京市', '上地', '变化的世界，不变的我们', 1),
 (1412, '测试3', '测试', '测试数据', '0-9', '2021-03-24', '电子商务', '五险一金', '北京市', '测试', '测试111', 1);
+
+-- --------------------------------------------------------
+
+--
+-- 表的结构 `boss_msg`
+--
+
+CREATE TABLE `boss_msg` (
+  `msgId` int(11) NOT NULL,
+  `userId` int(8) NOT NULL,
+  `workComId` int(8) NOT NULL,
+  `msgTime` datetime NOT NULL,
+  `sendID` int(8) NOT NULL,
+  `acceptID` int(8) NOT NULL,
+  `msgContent` varchar(300) COLLATE utf8mb4_bin NOT NULL,
+  `workId` int(8) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
+
+--
+-- 转存表中的数据 `boss_msg`
+--
+
+INSERT INTO `boss_msg` (`msgId`, `userId`, `workComId`, `msgTime`, `sendID`, `acceptID`, `msgContent`, `workId`, `status`) VALUES
+(10001, 10001, 1408, '2021-04-01 18:00:00', 10001, 10000, '您好？没有经验可以去吗', 10001, 1),
+(10002, 10001, 1408, '2021-04-01 18:01:00', 10000, 10001, '您好，我是AAA富士康直招 人事经理', 10001, 1),
+(10003, 10001, 1408, '2021-04-01 18:07:00', 10000, 10001, '现在是招聘热季，我们这里试干一月不收任何费用', 10001, 1);
 
 -- --------------------------------------------------------
 
@@ -110,7 +137,7 @@ CREATE TABLE `boss_resume` (
 --
 
 INSERT INTO `boss_resume` (`candId`, `name`, `sex`, `age`, `edu`, `school`, `workExper`, `projectExper`, `certificate`, `honor`, `expect`, `intro`, `userId`, `isShow`) VALUES
-(10000, '杨波', 0, 24, '博士', '清华大学西伯利亚分校农学院', 10, '无', '无', '一带一路暨金砖国家技能发展与技术大赛之网站设计与开发大赛三等奖', '天津，Java工程师，4-6k', '我是开发者', 10001, 0),
+(10000, '杨波', 0, 24, '博士', '清华大学西伯利亚分校农学院', 10, '无', '无', '一带一路暨金砖国家技能发展与技术大赛之网站设计与开发大赛三等奖', '天津，前端工程师，4-6k', '我是开发者', 10001, 0),
 (10001, '岳大颖', 1, 22, '大专', '五道口职业学院', 0, '无', '无', '无', '天津，UI设计师，4-6k', 'hello world', 10002, 0),
 (10002, '摇摆羊', 0, 22, '初中及以下', '宋庄子中学', 0, '无', '无', '无', '沈阳，品牌公关，8-15k', '几天不见，怎么这么拉了？', 10004, 0),
 (10003, '蔡大头', 0, 20, '高中/中专/职高', '廊坊九中', 0, '无', '无', '无', '南京，其他，15k以上', 'hello world', 10003, 0);
@@ -260,6 +287,12 @@ ALTER TABLE `boss_cominfo`
   ADD PRIMARY KEY (`workComId`);
 
 --
+-- Indexes for table `boss_msg`
+--
+ALTER TABLE `boss_msg`
+  ADD PRIMARY KEY (`msgId`);
+
+--
 -- Indexes for table `boss_offer`
 --
 ALTER TABLE `boss_offer`
@@ -304,6 +337,12 @@ ALTER TABLE `boss_workinfo`
 --
 ALTER TABLE `boss_cominfo`
   MODIFY `workComId` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1413;
+
+--
+-- 使用表AUTO_INCREMENT `boss_msg`
+--
+ALTER TABLE `boss_msg`
+  MODIFY `msgId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10004;
 
 --
 -- 使用表AUTO_INCREMENT `boss_offer`

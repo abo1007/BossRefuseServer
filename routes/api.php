@@ -64,3 +64,5 @@ Route::get('resume/getresumeid/{id}','ResumeController@getResumeID') -> name('re
 Route::apiResource('cominfo','CominfoController');
 // 获取一段60位随机字符串
 Route::get('getsha','UserController@getsha');
+
+Route::post('msg/userid','MsgController@chatMsgByUserId');
