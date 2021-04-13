@@ -71,8 +71,9 @@ class MsgController extends BaseController
     public function chatMsgByUserId(Request $request)
     {
         $data = $request->all();
+        $check = array('msg.userId' => $data["userId"], 'msg.workComId' => $data['comId'], 'msg.workId' => $data["workId"]);
         if ($data["mode"] == 0) {
-            $res = Msg::where("userId", $data["userId"])
+            $res = Msg::where($check)
                 ->join("workface", "msg.workId", "workface.workId")
                 ->join("cominfo", "msg.workComId", "cominfo.workComId")
                 ->select("msg.*", "workface.workTitle", "workface.workSalary", "workface.workPublisher", "cominfo.workComName")
