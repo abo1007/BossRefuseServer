@@ -79,15 +79,19 @@ class MsgController extends BaseController
                 ->select("msg.*", "workface.workTitle", "workface.workSalary", "workface.workPublisher", "cominfo.workComName")
                 ->get()->toArray();
 
-            $workRes = Workface::where("workId",$data["workId"])
+            $workRes = Workface::where("workId", $data["workId"])
                 ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
                 ->select('workface.workTitle', 'workface.workSalary', 'workface.workPublisher', 'cominfo.workComName')
                 ->get()->toArray();
 
-            if(count($res)){
-                return $this->create(array("msg"=>$res,"work"=>$workRes[0]), "数据请求成功", 200);
-            }else{
-                return $this->create([], "无数据", 204);
+            if (count($res)) {
+                return $this->create(array("msg" => $res, "work" => $workRes[0]), "数据请求成功", 200);
+            } else {
+                if (count($workRes)) {
+                    return $this->create(array("work" => $workRes[0]), "无数据", 204);
+                } else {
+                    return $this->create([], "无数据", 204);
+                }
             }
         }
     }
