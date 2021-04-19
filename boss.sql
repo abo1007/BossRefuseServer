@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 2021-04-08 16:20:05
+-- Generation Time: 2021-04-19 15:41:34
 -- 服务器版本： 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -79,7 +79,9 @@ CREATE TABLE `boss_msg` (
 INSERT INTO `boss_msg` (`msgId`, `userId`, `workComId`, `msgTime`, `sendID`, `acceptID`, `msgContent`, `workId`, `status`) VALUES
 (10001, 10001, 1408, '2021-04-01 18:00:00', 10001, 10000, '您好？没有经验可以去吗', 10001, 1),
 (10002, 10001, 1408, '2021-04-01 18:01:00', 10000, 10001, '您好，我是AAA富士康直招 人事经理', 10001, 1),
-(10003, 10001, 1408, '2021-04-01 18:07:00', 10000, 10001, '现在是招聘热季，我们这里试干一月不收任何费用', 10001, 1);
+(10003, 10001, 1408, '2021-04-01 18:07:00', 10000, 10001, '现在是招聘热季，我们这里试干一月不收任何费用', 10001, 1),
+(10004, 10001, 1408, '2021-04-01 19:37:00', 10001, 10000, '？？？', 10001, 1),
+(10005, 10001, 1408, '2021-04-19 20:26:20', 10001, 1408, '我给你一锤子？', 10001, 1);
 
 -- --------------------------------------------------------
 
@@ -342,7 +344,7 @@ ALTER TABLE `boss_cominfo`
 -- 使用表AUTO_INCREMENT `boss_msg`
 --
 ALTER TABLE `boss_msg`
-  MODIFY `msgId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10004;
+  MODIFY `msgId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10006;
 
 --
 -- 使用表AUTO_INCREMENT `boss_offer`

@@ -66,3 +66,5 @@ Route::apiResource('cominfo','CominfoController');
 Route::get('getsha','UserController@getsha');
 
 Route::post('msg/userid','MsgController@chatMsgByUserId');
+
+Route::post('msg', 'MsgController@store');

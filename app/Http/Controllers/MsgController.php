@@ -26,7 +26,29 @@ class MsgController extends BaseController
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        // 获得格式化时间
+        date_default_timezone_set("PRC");
+        $time = date("Y-m-d H:i:s", time());
+
+        if ($data["mode"] == 0) {
+            $insertData = array("userId" => $data["userId"], "workComId" => $data["comId"], "msgTime" => $time, "sendID" => $data["userId"],
+                "acceptID" => $data["comId"], "msgContent" => $data["msgContent"], "workId" => $data["workId"], "status" => 1);
+        } else if ($data["mode"] == 1) {
+            $insertData = array("userId" => $data["userId"], "workComId" => $data["comId"], "msgTime" => $time, "sendID" => $data["comId"],
+                "acceptID" => $data["userId"], "msgContent" => $data["msgContent"], "workId" => $data["workId"], "status" => 1);
+        } else {
+            return $this->create([], "参数无效", 208);
+        }
+
+        $res = Msg::insert($insertData);
+
+        if(count($res)){
+            return $this->create(1,"发送成功",200);
+        }else{
+            return $this->create(0,"发送失败",400);
+        }
     }
 
     /**
