@@ -68,3 +68,6 @@ Route::get('getsha','UserController@getsha');
 Route::post('msg/userid','MsgController@chatMsgByUserId');
 
 Route::post('msg', 'MsgController@store');
+
+// 获得最后一条聊天页条目数据
+Route::get('msg/userid/{id}','MsgController@getChatNum');

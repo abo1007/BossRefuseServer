@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\api\Msg;
 use App\api\Workface;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class MsgController extends BaseController
@@ -94,7 +95,7 @@ class MsgController extends BaseController
     {
         $data = $request->all();
         $check = array('msg.userId' => $data["userId"], 'msg.workComId' => $data['comId'], 'msg.workId' => $data["workId"]);
-        if ($data["mode"] == 0) {
+        if ($data["mode"] == 0 || $data["mode"] == 1) {
             $res = Msg::where($check)
                 ->join("workface", "msg.workId", "workface.workId")
                 ->join("cominfo", "msg.workComId", "cominfo.workComId")
@@ -115,6 +116,23 @@ class MsgController extends BaseController
                     return $this->create([], "无数据", 204);
                 }
             }
+        }
+    }
+
+    /**
+     * 获得 用户id 的最后一条数据
+     * @param $id
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
+     */
+    public function getChatNum($id) {
+        $sql = 'SELECT * FROM `boss_msg` ORDER BY `msgTime` DESC';
+        // select * from (SELECT * FROM boss_msg WHERE userId = '.$id.' GROUP BY workId as a) ORDER BY msgTime
+        $res = DB::select($sql);
+
+        if (count($res)){
+            return $this->create($res[0],"获取成功",200);
+        }else{
+            return $this->create([],"无数据",204);
         }
     }
 }
