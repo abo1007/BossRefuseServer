@@ -6,6 +6,7 @@ use App\api\Msg;
 use App\api\Workface;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 class MsgController extends BaseController
 {
@@ -45,10 +46,10 @@ class MsgController extends BaseController
 
         $res = Msg::insert($insertData);
 
-        if(count($res)){
-            return $this->create(1,"发送成功",200);
-        }else{
-            return $this->create(0,"发送失败",400);
+        if (count($res)) {
+            return $this->create(1, "发送成功", 200);
+        } else {
+            return $this->create(0, "发送失败", 400);
         }
     }
 
@@ -124,15 +125,29 @@ class MsgController extends BaseController
      * @param $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function getChatNum($id) {
-        $sql = 'SELECT * FROM `boss_msg` ORDER BY `msgTime` DESC';
-        // select * from (SELECT * FROM boss_msg WHERE userId = '.$id.' GROUP BY workId as a) ORDER BY msgTime
-        $res = DB::select($sql);
-
-        if (count($res)){
-            return $this->create($res[0],"获取成功",200);
+    public function getChatNum($id, Request $request)
+    {
+//        $sql = 'SELECT * FROM `boss_msg` ORDER BY `msgTime` DESC';
+        $type = $request->query("type");
+        if ($type) {
+            $res = Msg::where("msg.workComId", $id)
+                ->orderBy("msgTime", 'desc')
+                ->join('cominfo', 'msg.workComId', 'cominfo.workComId')
+                ->select('msg.*', 'cominfo.workComName')
+                ->get()->toArray();
         }else{
-            return $this->create([],"无数据",204);
+            $res = Msg::where("userId", $id)
+                ->orderBy("msgTime", 'desc')
+                ->join('cominfo', 'msg.workComId', 'cominfo.workComId')
+                ->select('msg.*', 'cominfo.workComName')
+                ->get()->toArray();
+        }
+        // select * from (SELECT * FROM boss_msg WHERE userId = '.$id.' GROUP BY workId as a) ORDER BY msgTime
+
+        if (count($res)) {
+            return $this->create($res[0], "获取成功", 200);
+        } else {
+            return $this->create([], "无数据", 204);
         }
     }
 }
