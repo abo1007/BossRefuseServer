@@ -6,9 +6,12 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet/less" href="{{asset("css/main.less")}}">
+    <link rel="stylesheet" href="{{asset("layui/css/layui.css")}}">
 
     <title>模板框架</title>
     <script src="{{asset("js/less.min.js")}}"></script>
+    <script src="{{asset("layui/layui.js")}}"></script>
+    <script src="{{asset("")}}"></script>
 </head>
 <body>
     <div id="app">
@@ -16,11 +19,40 @@
             <div class="left">
                 <p class="title">boss直拒 管理端</p>
             </div>
-            <div class="right">111</div>
+            <div class="right">
+                <p class="time">{{date('Y-m-d', time())}}</p>
+            </div>
         </div>
         <div class="main">
             <div class="nav">
+                <div class="item item1">
+                    <i class="layui-icon layui-icon-table"></i>
+                    <p>招聘管理</p>
+                </div>
+                <div class="item item2">
+                    <i class="layui-icon layui-icon-flag"></i>
+                    <p>企业管理</p>
+                </div>
+                <div class="item item3">
+                    <i class="layui-icon layui-icon-username"></i>
+                    <p>账户管理</p>
+                </div>
+                <div class="item item4">
+                    <i class="layui-icon layui-icon-layouts"></i>
+                    <p>广告管理</p>
+                </div>
+                <div class="item item5">
+                    <i class="layui-icon layui-icon-set"></i>
+                    <p>更多管理</p>
+                </div>
+                <div class="item item6">
+                    <i class="layui-icon layui-icon-more"></i>
+                    <p>关于系统</p>
+                </div>
 
+            </div>
+            <div class="content">
+                @yield('content')
             </div>
         </div>
     </div>

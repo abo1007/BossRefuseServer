@@ -25,6 +25,13 @@
     <expand />
     <select />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Less File" />
+      </list>
+    </option>
+  </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>AppServiceProvider</find>
@@ -128,7 +135,8 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../xampp/htdocs/laravel" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -142,6 +150,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\bossServer\public" />
+      <recent name="D:\bossServer\public\js" />
       <recent name="D:\bossServer\public\img" />
     </key>
   </component>
@@ -260,6 +270,13 @@
       <workItem from="1620042411674" duration="1537000" />
       <workItem from="1620114819369" duration="4526000" />
       <workItem from="1620285299137" duration="5000" />
+      <workItem from="1620649030815" duration="1947000" />
+      <workItem from="1621497811022" duration="7000" />
+      <workItem from="1621510470639" duration="994000" />
+      <workItem from="1621753719537" duration="8643000" />
+      <workItem from="1621816350517" duration="21000" />
+      <workItem from="1621994737887" duration="2314000" />
+      <workItem from="1622186445135" duration="311000" />
     </task>
     <servers />
   </component>
@@ -271,6 +288,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1617280542562" />
+    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1622186519021">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622186519021" />
     <state x="681" y="162" key="SettingsEditor" timestamp="1618834108965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

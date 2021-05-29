@@ -22,3 +22,7 @@ Route::get('login', function () {
 Route::get('main', function () {
     return view('admin.main');
 });
+
+Route::get('main/recruit', function () {
+    return view('admin.Recruit');
+});
