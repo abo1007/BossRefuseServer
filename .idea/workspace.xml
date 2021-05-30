@@ -276,7 +276,8 @@
       <workItem from="1621753719537" duration="8643000" />
       <workItem from="1621816350517" duration="21000" />
       <workItem from="1621994737887" duration="2314000" />
-      <workItem from="1622186445135" duration="311000" />
+      <workItem from="1622186445135" duration="3268000" />
+      <workItem from="1622376276725" duration="1591000" />
     </task>
     <servers />
   </component>
@@ -284,14 +285,22 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622376474079">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622376474079" />
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1617280542562">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1617280542562" />
-    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1622186519021">
+    <state x="728" y="240" key="NewPhpClassDialog" timestamp="1622186883819">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622186519021" />
+    <state x="728" y="240" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622186883819" />
+    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1622187323729">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622187323729" />
     <state x="681" y="162" key="SettingsEditor" timestamp="1618834108965">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -25,27 +25,27 @@
         </div>
         <div class="main">
             <div class="nav">
-                <div class="item item1">
+                <div class="item item1" onclick="goHref('recruit')">
                     <i class="layui-icon layui-icon-table"></i>
                     <p>招聘管理</p>
                 </div>
-                <div class="item item2">
+                <div class="item item2" onclick="goHref('enterprise')">
                     <i class="layui-icon layui-icon-flag"></i>
                     <p>企业管理</p>
                 </div>
-                <div class="item item3">
+                <div class="item item3" onclick="goHref('user')">
                     <i class="layui-icon layui-icon-username"></i>
                     <p>账户管理</p>
                 </div>
-                <div class="item item4">
+                <div class="item item4" onclick="goHref('advert')">
                     <i class="layui-icon layui-icon-layouts"></i>
                     <p>广告管理</p>
                 </div>
-                <div class="item item5">
+                <div class="item item5" onclick="goHref('more')">
                     <i class="layui-icon layui-icon-set"></i>
                     <p>更多管理</p>
                 </div>
-                <div class="item item6">
+                <div class="item item6" onclick="goHref('about')">
                     <i class="layui-icon layui-icon-more"></i>
                     <p>关于系统</p>
                 </div>
@@ -56,5 +56,10 @@
             </div>
         </div>
     </div>
+    <script>
+        function goHref(url) {
+            location.href = '{{url("main")}}' + '/' + url;
+        }
+    </script>
 </body>
 </html>
