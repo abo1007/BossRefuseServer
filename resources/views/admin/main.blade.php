@@ -11,8 +11,10 @@
     <title>模板框架</title>
     <script src="{{asset("js/less.min.js")}}"></script>
     <script src="{{asset("layui/layui.js")}}"></script>
-    <script src="{{asset("")}}"></script>
 </head>
+<?php
+    date_default_timezone_set("PRC");
+?>
 <body>
     <div id="app">
         <div class="header">
@@ -20,7 +22,8 @@
                 <p class="title">boss直拒 管理端</p>
             </div>
             <div class="right">
-                <p class="time">{{date('Y-m-d', time())}}</p>
+                <p class="time">{{date('H:i:s', time())}}</p>
+                <p class="time">{{date('Y-m-d l', time())}}</p>
             </div>
         </div>
         <div class="main">
