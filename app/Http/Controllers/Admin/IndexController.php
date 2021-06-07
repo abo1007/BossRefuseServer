@@ -10,6 +10,10 @@ use App\api\Workface;
 
 class IndexController extends \App\Http\Controllers\Controller
 {
+    public function getView(){
+        return redirect("admin/about");
+    }
+
     public function getView1()
     {
         $workfaces = Workface::join('cominfo', 'workface.workComId', 'cominfo.workComId')

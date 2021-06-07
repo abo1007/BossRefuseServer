@@ -80,7 +80,7 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title m-b-md" onclick="goLogin()">
                     Abo&nbsp;&nbsp;API
                 </div>
 
@@ -95,5 +95,10 @@
                 </div>
             </div>
         </div>
+        <script>
+            function goLogin() {
+                location.href = '{{url("login")}}';
+            }
+        </script>
     </body>
 </html>

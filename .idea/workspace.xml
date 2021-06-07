@@ -135,7 +135,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -150,9 +150,9 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\bossServer\public\img" />
       <recent name="D:\bossServer\public" />
       <recent name="D:\bossServer\public\js" />
-      <recent name="D:\bossServer\public\img" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -280,6 +280,8 @@
       <workItem from="1622376276725" duration="2950000" />
       <workItem from="1622452956525" duration="3011000" />
       <workItem from="1622507103610" duration="1224000" />
+      <workItem from="1622809759890" duration="2313000" />
+      <workItem from="1622883062892" duration="2009000" />
     </task>
     <servers />
   </component>
@@ -307,9 +309,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1618834108965" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1620043068700">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1622810938810">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1620043068700" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622810938810" />
   </component>
 </project>

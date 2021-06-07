@@ -23,7 +23,7 @@
             </div>
             <div class="right">
                 <p class="time">{{date('H:i:s', time())}}</p>
-                <p class="time">{{date('Y-m-d l', time())}}</p>
+                <p class="time">{{date('Y-m-d l', time())}} </p>
             </div>
         </div>
         <div class="main">
@@ -61,7 +61,7 @@
     </div>
     <script>
         function goHref(url) {
-            location.href = '{{url("main")}}' + '/' + url;
+            location.href = '{{url("admin")}}' + '/' + url;
         }
     </script>
 </body>

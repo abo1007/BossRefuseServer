@@ -33,7 +33,7 @@ class WorkfaceController extends BaseController
     /**
      * 录入 招聘信息
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -41,7 +41,7 @@ class WorkfaceController extends BaseController
         //
         $data = $request->all();
         $insertData = array("workTitle" => $data["workTitle"], "workSalary" => $data["workSalary"], "workTag" => $data["workTag"],
-            "workPublisher" => $data["workPublisher"], "workCateId" => $data["workCateId"], "workComId" => $data["workComId"]);
+            "workPublisher" => $data["workPublisher"], "workPublisherId" => $data["workPublisherId"], "workCateId" => $data["workCateId"], "workComId" => $data["workComId"]);
         $result = Workface::insertGetId($insertData);
         if ($result) {
             $result2 = DB::table("workinfo")->insert(array("workId" => $result, "workIntro" => $data["workIntro"]));
@@ -59,7 +59,7 @@ class WorkfaceController extends BaseController
     /**
      * 获取招聘详情页信息
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -69,10 +69,10 @@ class WorkfaceController extends BaseController
             return $this->create([], "id参数错误", 400);
         }
 
-        $workfaces = Workface::where("workface.workId",$id)
+        $workfaces = Workface::where("workface.workId", $id)
             ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
-            ->join('workinfo','workface.workId','workinfo.workId')
-            ->select('workface.*', 'workinfo.workIntro','cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale', 'cominfo.workComCate')
+            ->join('workinfo', 'workface.workId', 'workinfo.workId')
+            ->select('workface.*', 'workinfo.workIntro', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale', 'cominfo.workComCate')
             ->get()
             ->toArray();
 
@@ -89,8 +89,8 @@ class WorkfaceController extends BaseController
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -98,7 +98,7 @@ class WorkfaceController extends BaseController
         $data = $request->all();
         $updateData = array("workTitle" => $data["workTitle"], "workSalary" => $data["workSalary"], "workTag" => $data["workTag"],
             "workPublisher" => $data["workPublisher"], "workCateId" => $data["workCateId"], "workComId" => $data["workComId"]);
-        $result = Workface::where("workId",$id)->update($updateData);
+        $result = Workface::where("workId", $id)->update($updateData);
 
         if ($result) {
             return $this->create(1, "修改成功", 200);
@@ -110,7 +110,7 @@ class WorkfaceController extends BaseController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -203,7 +203,8 @@ class WorkfaceController extends BaseController
             ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
             ->get()->toArray();
 
-        $data = $this->workTagsToArr($data) ;
+
+        $data = $this->workTagsToArr($data);
 
         if (empty($data)) {
             return $this->create([], "无数据", 204);
@@ -217,16 +218,17 @@ class WorkfaceController extends BaseController
      * @param $searchValue
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
-    public function searchTitle($searchValue) {
+    public function searchTitle($searchValue)
+    {
 
-        $res = Workface::where("workTitle","like",'%'.$searchValue.'%')
+        $res = Workface::where("workTitle", "like", '%' . $searchValue . '%')
             ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
             ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
             ->get()->toArray();
 
-        if(count($res)){
+        if (count($res)) {
             return $this->create($res, "数据请求成功", 200);
-        }else{
+        } else {
             return $this->create([], "无数据", 204);
         }
 

@@ -19,13 +19,14 @@ Route::get('login', function () {
     return view('login');
 });
 
-Route::get('main', function () {
-    return view('admin.main');
-});
+//Route::get('main', function () {
+//    return view('admin.main');
+//});
+Route::get('admin', "Admin\IndexController@getView");
 
-Route::get('main/recruit', "Admin\IndexController@getView1");
-Route::get('main/enterprise', "Admin\IndexController@getView2");
-Route::get('main/user', "Admin\IndexController@getView3");
-Route::get('main/advert', "Admin\IndexController@getView4");
-Route::get('main/more', "Admin\IndexController@getView5");
-Route::get('main/about', "Admin\IndexController@getView6");
+Route::get('admin/recruit', "Admin\IndexController@getView1");
+Route::get('admin/enterprise', "Admin\IndexController@getView2");
+Route::get('admin/user', "Admin\IndexController@getView3");
+Route::get('admin/advert', "Admin\IndexController@getView4");
+Route::get('admin/more', "Admin\IndexController@getView5");
+Route::get('admin/about', "Admin\IndexController@getView6");
