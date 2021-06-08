@@ -23,7 +23,10 @@
             </div>
             <div class="right">
                 <p class="time">{{date('H:i:s', time())}}</p>
-                <p class="time">{{date('Y-m-d l', time())}} </p>
+                <p class="time">{{date('Y-m-d l', time())}}
+                    <button class="layui-btn layui-btn-danger layui-btn-radius"
+                    onclick="location.href='{{url("login")}}'">退出登录</button>
+                </p>
             </div>
         </div>
         <div class="main">
