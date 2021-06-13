@@ -22,8 +22,9 @@
                 <p class="title">boss直拒 管理端</p>
             </div>
             <div class="right">
-                <p class="time">{{date('H:i:s', time())}}</p>
-                <p class="time">{{date('Y-m-d l', time())}}
+                <p class="time" id="time">00:00</p>
+                <p class="time">
+                    <span>{{date('Y-m-d l', time())}}</span>
                     <button class="layui-btn layui-btn-danger layui-btn-radius"
                     onclick="location.href='{{url("login")}}'">退出登录</button>
                 </p>
@@ -66,6 +67,19 @@
         function goHref(url) {
             location.href = '{{url("admin")}}' + '/' + url;
         }
+        let timer = document.querySelector("#time");
+        let ndate, h, m;
+        function getDate(){
+            ndate = new Date();
+            h = ndate.getHours();
+            m = ndate.getMinutes();
+            m = m>9?m:"0"+m;
+            timer.innerText = h + ":" + m;
+        }
+        getDate();
+        setInterval(() => {
+            getDate();
+        },10000)
     </script>
 </body>
 </html>
