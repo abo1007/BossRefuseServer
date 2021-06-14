@@ -11,6 +11,7 @@
     <title>模板框架</title>
     <script src="{{asset("js/less.min.js")}}"></script>
     <script src="{{asset("layui/layui.js")}}"></script>
+    <script src="{{asset("js/jquery-3.3.1.min.js")}}"></script>
 </head>
 <?php
     date_default_timezone_set("PRC");
