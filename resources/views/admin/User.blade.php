@@ -32,12 +32,12 @@
                 <tr>
                     <td>{{$item["id"]}}</td>
                     <td>{{$item["username"]}}</td>
-                    <td>{{$item["sex"]}}</td>
+                    <td>{{$item["sex"]==0?"男":"女"}}</td>
                     <td>{{$item["regtime"]}}</td>
                     <td>{{$item["phonenum"]}}</td>
                     <td>{{$item["nickname"]}}</td>
-                    <td>{{$item["isvip"]}}</td>
-                    <td>{{$item["isCom"]}}</td>
+                    <td>{{$item["isvip"]==1?"VIP":""}}</td>
+                    <td>{{$item["isCom"]==1?"企业":"用户"}}</td>
                     <td>{{$item["spareId"]}}</td>
                     <td style="display: flex">
                         <button class="layui-btn layui-btn-normal">查看</button>

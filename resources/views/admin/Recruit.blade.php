@@ -45,7 +45,7 @@
                             <button class="layui-btn">查看</button>
                             <button class="layui-btn layui-btn-warm"
                                     onclick="toShow({{$item["show"]}}, {{$item["workId"]}})">{{$item["show"]==0?"下架":"展示"}}</button>
-                            <button class="layui-btn layui-btn-danger">删除</button>
+                            <button class="layui-btn layui-btn-danger" onclick="todel({{$item["workId"]}})">删除</button>
                         </td>
                     </tr>
                 @endforeach
@@ -61,7 +61,12 @@
                 }, function (index, layero) {
                     layer.closeAll();
                     $.get("{{\Illuminate\Support\Facades\URL::current()}}" + "/noshow/" + id, (res, status) => {
-                        console.log(res)
+                        if(res.code == 200){
+                            layer.msg('下架成功');
+                            location.reload();
+                        }else{
+                            layer.msg('下架失败');
+                        }
                     })
 
                 }, function (index) {
@@ -74,14 +79,36 @@
                 }, function (index, layero) {
                     layer.closeAll();
                     $.get("{{\Illuminate\Support\Facades\URL::current()}}" + "/toshow/" + id, (res, status) => {
-                        console.log(res)
-                        console.log(status)
+                        if(res.code == 200){
+                            layer.msg('上架成功');
+                            location.reload();
+                        }else{
+                            layer.msg('上架失败');
+                        }
                     })
                 }, function (index) {
                     return;
                 });
 
             }
+        }
+        function todel(id) {
+            layer.confirm('确定要删除该招聘信息吗', {
+                btn: ['确定', '取消'] //可以无限个按钮
+            }, function (index, layero) {
+                layer.closeAll();
+                layer.msg("您无此权限")
+                {{--$.get("{{\Illuminate\Support\Facades\URL::current()}}" + "/del/" + id, (res, status) => {--}}
+                {{--    if(res.code == 200){--}}
+                {{--        layer.msg('删除成功');--}}
+                {{--        location.reload();--}}
+                {{--    }else{--}}
+                {{--        layer.msg('删除失败');--}}
+                {{--    }--}}
+                {{--})--}}
+            }, function (index) {
+                return;
+            });
         }
     </script>
 @endsection

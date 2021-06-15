@@ -33,3 +33,4 @@ Route::get('admin/about', "Admin\IndexController@getView6");
 
 Route::get('admin/recruit/toshow/{id}', "Admin\RecruitController@toShow");
 Route::get('admin/recruit/noshow/{id}', "Admin\RecruitController@noShow");
+Route::get('admin/recruit/del/{id}', "Admin\RecruitController@toDel");

@@ -11,7 +11,7 @@
  Target Server Version : 100126
  File Encoding         : 65001
 
- Date: 06/06/2021 16:55:09
+ Date: 14/06/2021 21:26:32
 */
 
 SET NAMES utf8mb4;
@@ -221,19 +221,20 @@ CREATE TABLE `boss_workface`  (
   `workPublisher` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `workCateId` int(3) NOT NULL,
   `workPublisherId` int(8) NOT NULL,
+  `show` int(1) NOT NULL,
   PRIMARY KEY (`workId`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 10008 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of boss_workface
 -- ----------------------------
-INSERT INTO `boss_workface` VALUES (10001, '全栈工程师', '1-2K', 1408, '硕士，3-5年，Vue，Java', '刘先生·人事', 106, 10000);
-INSERT INTO `boss_workface` VALUES (10002, '产品经理', '0.5-1.5K', 1408, '本科，1-3年，弹性工作，大牛云集', '刘先生·人事', 201, 10000);
-INSERT INTO `boss_workface` VALUES (10003, 'UI设计师', '6-10k', 1408, '本科，3年，Ps，Ai', '人事·老王', 301, 10000);
-INSERT INTO `boss_workface` VALUES (10004, 'Java架构师', '30-60k', 1408, '本科，5-10年，985/211，Java', '人事·老王', 101, 10000);
-INSERT INTO `boss_workface` VALUES (10005, '前端工程师', '6-8k', 1408, '硕士，5-10年，五险一金，996', '人事·老王', 102, 10000);
-INSERT INTO `boss_workface` VALUES (10006, '电商运营', '2-4k', 1408, '高中/中专/职高，1年以内，弹性工作', '人事·老王', 401, 10000);
-INSERT INTO `boss_workface` VALUES (10007, '流水线技工', '2-4k', 1413, '大专，应届生，五险一金，朝九晚五', '农校老王', 600, 10006);
+INSERT INTO `boss_workface` VALUES (10001, '全栈工程师', '1-2K', 1408, '硕士，3-5年，Vue，Java', '刘先生·人事', 106, 10000, 0);
+INSERT INTO `boss_workface` VALUES (10002, '产品经理', '0.5-1.5K', 1408, '本科，1-3年，弹性工作，大牛云集', '刘先生·人事', 201, 10000, 0);
+INSERT INTO `boss_workface` VALUES (10003, 'UI设计师', '6-10k', 1408, '本科，3年，Ps，Ai', '人事·老王', 301, 10000, 0);
+INSERT INTO `boss_workface` VALUES (10004, 'Java架构师', '30-60k', 1408, '本科，5-10年，985/211，Java', '人事·老王', 101, 10000, 0);
+INSERT INTO `boss_workface` VALUES (10005, '前端工程师', '6-8k', 1408, '硕士，5-10年，五险一金，996', '人事·老王', 102, 10000, 0);
+INSERT INTO `boss_workface` VALUES (10006, '电商运营', '2-4k', 1408, '高中/中专/职高，1年以内，弹性工作', '人事·老王', 401, 10000, 0);
+INSERT INTO `boss_workface` VALUES (10007, '流水线技工', '2-4k', 1413, '大专，应届生，五险一金，朝九晚五', '农校老王', 600, 10006, 1);
 
 -- ----------------------------
 -- Table structure for boss_workinfo
