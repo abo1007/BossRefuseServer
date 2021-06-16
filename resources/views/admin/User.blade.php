@@ -41,7 +41,7 @@
                     <td>{{$item["spareId"]}}</td>
                     <td style="display: flex">
                         <button class="layui-btn layui-btn-normal">查看</button>
-                        <button	class="layui-btn layui-btn-normal">编辑</button>
+                        <button	class="layui-btn layui-btn-normal" onclick="goInfo({{$item["id"]}})">编辑</button>
                     </td>
                 </tr>
             @endforeach
@@ -50,6 +50,8 @@
     </div>
 </div>
 <script>
-
+    function goInfo(id) {
+        location.href = '{{\Illuminate\Support\Facades\URL::current()}}/' + id;
+    }
 </script>
 @endsection

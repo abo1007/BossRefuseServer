@@ -31,6 +31,7 @@ class RecruitController extends BaseController
         }
     }
 
+    // 删除
     public function toDel($id)
     {
         $res = Workface::where("workId", $id)->delete();
