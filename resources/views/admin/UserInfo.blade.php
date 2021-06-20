@@ -2,6 +2,9 @@
 
 @section("content")
     <style>
+        .item3{
+            background-color: rgba(0,0,0,.3);
+        }
         .option {
             width: 100%;
             height: 60px;
@@ -45,7 +48,7 @@
     <div id="root">
         <div class="option">
             <p onclick="location.href = '{{url("admin/user")}}'">< 返回</p>
-            <button class="layui-btn layui-btn-normal layui-btn-radius">保存信息 ></button>
+            <button class="layui-btn layui-btn-normal layui-btn-radius" onclick="goUpdate({{$user["id"]}})">保存信息 ></button>
         </div>
         <div class="userinfo-container layui-form">
             <h1></h1>
@@ -63,6 +66,7 @@
                 <div class="layui-input-block">
                     <input type="text" required
                            lay-verify="required" autocomplete="off"
+                           id="username"
                            value="{{$user["username"]}}"
                            class="layui-input input-item">
                 </div>
@@ -90,6 +94,7 @@
                 <div class="layui-input-block">
                     <input type="text" required
                            lay-verify="required" autocomplete="off"
+                           id="phonenum"
                            value="{{$user["phonenum"]}}"
                            class="layui-input input-item">
                 </div>
@@ -99,6 +104,7 @@
                 <div class="layui-input-block">
                     <input type="text" required
                            lay-verify="required" autocomplete="off"
+                           id="nickname"
                            value="{{$user["nickname"]}}"
                            class="layui-input input-item">
                 </div>
@@ -160,10 +166,13 @@
             }
         }
         function getCom(type) {
+
             if(type == 0){
                 com0.checked = true;
+                com1.disabled = true;
             }else{
                 com1.checked = true;
+                com0.disabled = true;
             }
         }
         function getVip(type) {
@@ -172,6 +181,28 @@
             }else{
                 vip1.checked = true;
             }
+        }
+        function goUpdate(id) {
+            let username = document.querySelector("#username");
+            let phonenum = document.querySelector("#phonenum");
+            let nickname = document.querySelector("#nickname");
+            let sexVal = $("input[name='sex']:checked").val();
+            let vipVal = $("input[name='vip']:checked").val();
+
+            let data = {
+                username:username.value,
+                phonenum:phonenum.value,
+                nickname:nickname.value,
+                sex:sexVal,
+                isvip:vipVal
+            };
+            $.post('{{url("admin/user/update")}}' + '/' + id,data,(res,status) => {
+                console.log(res)
+                if (res.code == 200){
+                    layer.msg("修改成功");
+                    location.href = '{{url("admin/user")}}';
+                }
+            })
         }
     </script>
 @endsection

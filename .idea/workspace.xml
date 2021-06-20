@@ -135,7 +135,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -146,13 +146,13 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\bossServer\public\js" />
       <recent name="D:\bossServer\public\img" />
       <recent name="D:\bossServer\public" />
-      <recent name="D:\bossServer\public\js" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -285,6 +285,11 @@
       <workItem from="1622970402222" duration="449000" />
       <workItem from="1623111815471" duration="194000" />
       <workItem from="1623495037658" duration="1800000" />
+      <workItem from="1623547810779" duration="1774000" />
+      <workItem from="1623588938800" duration="2304000" />
+      <workItem from="1623632906341" duration="2797000" />
+      <workItem from="1623677406210" duration="3121000" />
+      <workItem from="1623755090400" duration="3963000" />
     </task>
     <servers />
   </component>
@@ -300,18 +305,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1617280542562" />
-    <state x="728" y="240" key="NewPhpClassDialog" timestamp="1622186883819">
+    <state x="550" y="150" width="463" height="552" key="NewPhpClassDialog" timestamp="1623677860601">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="728" y="240" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622186883819" />
-    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1622187323729">
+    <state x="550" y="150" width="463" height="552" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1623677860601" />
+    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1623677747368">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622187323729" />
-    <state x="681" y="162" key="SettingsEditor" timestamp="1618834108965">
+    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1623677747368" />
+    <state x="681" y="162" key="SettingsEditor" timestamp="1623677484155">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="681" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1618834108965" />
+    <state x="681" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1623677484155" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1622810938810">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
