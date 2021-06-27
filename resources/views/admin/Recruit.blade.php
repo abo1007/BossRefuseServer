@@ -42,7 +42,7 @@
                         <td>{{$item["workComCity"]}} {{$item["workComArea"]}}</td>
                         <td>{{$item["show"]==0?"展示":"下架"}}</td>
                         <td>
-                            <button class="layui-btn">查看</button>
+                            <button class="layui-btn" onclick="toInfo({{$item["workId"]}})">查看</button>
                             <button class="layui-btn layui-btn-warm"
                                     onclick="toShow({{$item["show"]}}, {{$item["workId"]}})">{{$item["show"]==0?"下架":"展示"}}</button>
                             <button class="layui-btn layui-btn-danger" onclick="todel({{$item["workId"]}})">删除</button>
@@ -109,6 +109,9 @@
             }, function (index) {
                 return;
             });
+        }
+        function toInfo(id) {
+            location.href = "{{\Illuminate\Support\Facades\URL::current()}}" + "/info/" +id;
         }
     </script>
 @endsection

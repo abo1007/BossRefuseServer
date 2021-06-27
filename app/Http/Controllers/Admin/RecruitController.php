@@ -41,4 +41,9 @@ class RecruitController extends BaseController
             return $this->create([], "none", 400);
         }
     }
+    public function goInfo($id)
+    {
+        $res = Workface::where("workId", $id)->get();
+        return view('admin.RecruitInfo',['workface'=>$res[0]]);
+    }
 }
