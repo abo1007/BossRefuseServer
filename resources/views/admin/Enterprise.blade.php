@@ -44,7 +44,7 @@
                     <td>{{$item["workComIntro"]}}</td>
                     <td>{{$item["workComCap"]}}</td>
                     <td style="display: flex">
-                        <button class="layui-btn layui-btn-normal">查看</button>
+                        <button class="layui-btn layui-btn-normal" onclick="goInfo({{$item["workComId"]}})">查看</button>
                         <button	class="layui-btn layui-btn-normal">下架</button>
                     </td>
                 </tr>
@@ -54,6 +54,8 @@
     </div>
 </div>
 <script>
-
+function goInfo(comId) {
+    location.href = '{{\Illuminate\Support\Facades\URL::current()}}' + '/' + comId;
+}
 </script>
 @endsection

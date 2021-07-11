@@ -40,3 +40,4 @@ Route::get('admin/recruit/info/{id}', "Admin\RecruitController@goInfo");
 Route::get('admin/user/{id}', "Admin\UserController@getUserInfoView");
 Route::post('admin/user/update/{id}', "Admin\UserController@updateUserInfo");
 
+Route::get('admin/enterprise/{comId}', "Admin\EnterpriseController@getComWorkList");
