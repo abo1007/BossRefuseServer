@@ -11,11 +11,30 @@
  Target Server Version : 100126
  File Encoding         : 65001
 
- Date: 14/06/2021 21:26:32
+ Date: 11/07/2021 21:14:17
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for boss_advert
+-- ----------------------------
+DROP TABLE IF EXISTS `boss_advert`;
+CREATE TABLE `boss_advert`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `imgUrl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
+  `state` int(1) NOT NULL DEFAULT 1,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of boss_advert
+-- ----------------------------
+INSERT INTO `boss_advert` VALUES (1, '轮播1', '/advert/slide1.png', 1);
+INSERT INTO `boss_advert` VALUES (2, '轮播2', '/advert/slide2.png', 1);
+INSERT INTO `boss_advert` VALUES (3, '轮播3', '/advert/slide3.png', 1);
 
 -- ----------------------------
 -- Table structure for boss_cominfo
@@ -234,7 +253,7 @@ INSERT INTO `boss_workface` VALUES (10003, 'UI设计师', '6-10k', 1408, '本科
 INSERT INTO `boss_workface` VALUES (10004, 'Java架构师', '30-60k', 1408, '本科，5-10年，985/211，Java', '人事·老王', 101, 10000, 0);
 INSERT INTO `boss_workface` VALUES (10005, '前端工程师', '6-8k', 1408, '硕士，5-10年，五险一金，996', '人事·老王', 102, 10000, 0);
 INSERT INTO `boss_workface` VALUES (10006, '电商运营', '2-4k', 1408, '高中/中专/职高，1年以内，弹性工作', '人事·老王', 401, 10000, 0);
-INSERT INTO `boss_workface` VALUES (10007, '流水线技工', '2-4k', 1413, '大专，应届生，五险一金，朝九晚五', '农校老王', 600, 10006, 1);
+INSERT INTO `boss_workface` VALUES (10007, '流水线技工', '2-4k', 1413, '大专，应届生，五险一金，朝九晚五', '农校老王', 600, 10006, 0);
 
 -- ----------------------------
 -- Table structure for boss_workinfo

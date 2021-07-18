@@ -135,7 +135,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/advert" />
     <property name="list.type.of.created.stylesheet" value="Less" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -150,6 +150,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\bossServer\public\advert" />
       <recent name="D:\bossServer\public\js" />
       <recent name="D:\bossServer\public\img" />
       <recent name="D:\bossServer\public" />
@@ -292,6 +293,7 @@
       <workItem from="1623755090400" duration="3963000" />
       <workItem from="1624778319937" duration="1225000" />
       <workItem from="1625232225891" duration="2551000" />
+      <workItem from="1626006799615" duration="2413000" />
     </task>
     <servers />
   </component>
@@ -303,18 +305,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622378156236" />
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1617280542562">
+    <state x="1246" y="191" width="463" height="552" key="NewPhpClassDialog" timestamp="1626008330167">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1617280542562" />
-    <state x="550" y="150" width="463" height="552" key="NewPhpClassDialog" timestamp="1625232347785">
+    <state x="1246" y="191" width="463" height="552" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1626008330167" />
+    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1626007887075">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="550" y="150" width="463" height="552" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625232347785" />
-    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1625232402642">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1625232402642" />
+    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1626007887075" />
     <state x="681" y="162" key="SettingsEditor" timestamp="1623677484155">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

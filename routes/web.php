@@ -27,7 +27,7 @@ Route::get('admin', "Admin\IndexController@getView");
 Route::get('admin/recruit', "Admin\IndexController@getView1");
 Route::get('admin/enterprise', "Admin\IndexController@getView2");
 Route::get('admin/user', "Admin\IndexController@getView3");
-Route::get('admin/advert', "Admin\IndexController@getView4");
+Route::get('admin/advert', "Admin\AdvertController@getView");
 Route::get('admin/more', "Admin\IndexController@getView5");
 Route::get('admin/about', "Admin\IndexController@getView6");
 
