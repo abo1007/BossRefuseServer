@@ -44,7 +44,7 @@
     </style>
     <div id="root">
         <div class="actions">
-            <button class="layui-btn layui-btn-normal" onclick="">上传广告</button>
+            <button class="layui-btn layui-btn-normal" onclick="location.href='{{url('admin/advert/add')}}'">上传广告</button>
 
         </div>
         <div class="photo-list">

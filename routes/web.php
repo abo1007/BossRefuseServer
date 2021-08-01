@@ -41,3 +41,5 @@ Route::get('admin/user/{id}', "Admin\UserController@getUserInfoView");
 Route::post('admin/user/update/{id}', "Admin\UserController@updateUserInfo");
 
 Route::get('admin/enterprise/{comId}', "Admin\EnterpriseController@getComWorkList");
+
+Route::get('admin/advert/add', "Admin\AdvertController@getAddView");

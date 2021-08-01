@@ -12,4 +12,8 @@ class AdvertController extends \App\Http\Controllers\BaseController
         $res = Advert::get();
         return view("admin.Advert",["advert"=>$res]);
     }
+    public function getAddView(){
+        return view("admin.AdvertAdd");
+    }
+
 }

@@ -71,3 +71,6 @@ Route::post('msg', 'MsgController@store');
 
 // 获得最后一条聊天页条目数据
 Route::get('msg/userid/{id}','MsgController@getChatNum');
+
+// 轮播图
+Route::get('banner','AdvertAPIController@getBanner');
