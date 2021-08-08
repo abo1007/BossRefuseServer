@@ -6,71 +6,45 @@
             background-color: rgba(0,0,0,.3);
         }
         #root{
-
+            padding: 30px 0;
         }
-        #root{
-
+        .yulanimg{
+            height:100px;
+            width: 300px;
+            display: none;
         }
     </style>
     <div id="root">
-        <form class="layui-form" action="">
+        <form class="layui-form" >
+
             <div class="layui-form-item">
-                <label class="layui-form-label">输入框</label>
+                <label class="layui-form-label">名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="title" required  lay-verify="required" placeholder="请输入标题" autocomplete="off" class="layui-input">
+                    <input type="text" name="name" required id="name" lay-verify="required"
+                           maxlength="14" placeholder="请输入标题" autocomplete="off" class="layui-input">
                 </div>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">密码框</label>
-                <div class="layui-input-inline">
-                    <input type="password" name="password" required lay-verify="required" placeholder="请输入密码" autocomplete="off" class="layui-input">
-                </div>
-                <div class="layui-form-mid layui-word-aux">辅助文字</div>
+                <label class="layui-form-label">上传</label>
+                <button type="button" class="layui-btn" id="test1">
+                    <i class="layui-icon">&#xe67c;</i>上传图片
+                </button>
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">选择框</label>
-                <div class="layui-input-block">
-                    <select name="city" lay-verify="required">
-                        <option value=""></option>
-                        <option value="0">北京</option>
-                        <option value="1">上海</option>
-                        <option value="2">广州</option>
-                        <option value="3">深圳</option>
-                        <option value="4">杭州</option>
-                    </select>
-                </div>
+                <label class="layui-form-label">预览</label>
+                <img src="" alt="" class="yulanimg" id="ylimg">
             </div>
             <div class="layui-form-item">
-                <label class="layui-form-label">复选框</label>
+                <label class="layui-form-label">是否展示</label>
                 <div class="layui-input-block">
-                    <input type="checkbox" name="like[write]" title="写作">
-                    <input type="checkbox" name="like[read]" title="阅读" checked>
-                    <input type="checkbox" name="like[dai]" title="发呆">
+                    <input type="radio" name="show" value="1" title="展示" checked>
+                    <input type="radio" name="show" value="2" title="下架">
                 </div>
             </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">开关</label>
-                <div class="layui-input-block">
-                    <input type="checkbox" name="switch" lay-skin="switch">
-                </div>
-            </div>
-            <div class="layui-form-item">
-                <label class="layui-form-label">单选框</label>
-                <div class="layui-input-block">
-                    <input type="radio" name="sex" value="男" title="男">
-                    <input type="radio" name="sex" value="女" title="女" checked>
-                </div>
-            </div>
-            <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">文本域</label>
-                <div class="layui-input-block">
-                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
-                </div>
-            </div>
+
             <div class="layui-form-item">
                 <div class="layui-input-block">
-                    <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-                    <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button class="layui-btn" lay-submit lay-filter="formDemo" onclick="postData">立即提交</button>
                 </div>
             </div>
         </form>
@@ -82,20 +56,69 @@
 
                 //监听提交
                 form.on('submit(formDemo)', function(data){
-                    layer.msg(JSON.stringify(data.field));
+                    if(!imgURL){
+                        layer.msg("请上传图片");
+                        return false
+                    }
+                    console.log(data.field)
+                    jQuery.ajax({
+                        method:"POST",
+                        url:'{{url("admin/advert/post")}}',
+                        data:{
+                            imgUrl:imgURL,
+                            name:data.field.name,
+                            state:data.field.show
+                        },
+                        success:function (res) {
+                            if(res.code == 200){
+                                layer.msg("添加成功");
+                                location.href = '{{url('admin/advert')}}';
+                            }else{
+                                layer.msg("服务器异常");
+                            }
+                        }
+                    })
+
                     return false;
                 });
             });
+
+            let dom = document.querySelector("#ylimg");
+            let imgURL = "";
+
+            var upload = layui.upload;
+
+            //执行实例
+            var uploadInst = upload.render({
+                elem: '#test1', //绑定元素
+                url: '{{url("admin/photo")}}', //上传接口
+                field:'img',
+                done: function (res) {
+                    //上传完毕回调
+                    console.log(res)
+                    if(res.code == 200){
+                        dom.style.display = 'block';
+                        dom.src = '/public'+res.data;
+                        imgURL = res.data;
+                    }else{
+                        console.log("ERROR")
+                    }
+                },
+                error: function () {
+                    //请求异常回调
+                }
+            });
+
+
+
+            function postData() {
+                let name = jQuery('#name').val();
+                let radio = $("input[name='show']:checked").val();
+                console.log(radio)
+            }
+
         </script>
 
     </div>
-    <script>
-        function toShow(state, id) {
-
-        }
-        function toDel(id) {
-
-        }
-    </script>
 
 @endsection

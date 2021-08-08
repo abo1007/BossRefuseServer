@@ -11,7 +11,7 @@
  Target Server Version : 100126
  File Encoding         : 65001
 
- Date: 11/07/2021 21:14:17
+ Date: 08/08/2021 22:36:15
 */
 
 SET NAMES utf8mb4;
@@ -27,7 +27,7 @@ CREATE TABLE `boss_advert`  (
   `imgUrl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL,
   `state` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of boss_advert
@@ -35,6 +35,7 @@ CREATE TABLE `boss_advert`  (
 INSERT INTO `boss_advert` VALUES (1, '轮播1', '/advert/slide1.png', 1);
 INSERT INTO `boss_advert` VALUES (2, '轮播2', '/advert/slide2.png', 1);
 INSERT INTO `boss_advert` VALUES (3, '轮播3', '/advert/slide3.png', 1);
+INSERT INTO `boss_advert` VALUES (4, '1212', '/advert/2021-08-07610e226dd116f.png', 1);
 
 -- ----------------------------
 -- Table structure for boss_cominfo
