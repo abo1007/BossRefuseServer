@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\api\Cominfo;
 use function foo\func;
 use Illuminate\Http\Request;
 use App\api\Workface;
@@ -214,20 +215,22 @@ class WorkfaceController extends BaseController
     }
 
     /**
-     * 搜索职位数据
+     * 搜索 数据
      * @param $searchValue
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      */
     public function searchTitle($searchValue)
     {
 
-        $res = Workface::where("workTitle", "like", '%' . $searchValue . '%')
+        $works = Workface::where("workTitle", "like", '%' . $searchValue . '%')
             ->join('cominfo', 'workface.workComId', 'cominfo.workComId')
             ->select('workface.*', 'cominfo.workComId', 'cominfo.workComCity', 'cominfo.workComArea', 'cominfo.workComName', 'cominfo.workComScale')
             ->get()->toArray();
+        $coms = Cominfo::where("workComName", "like", '%' . $searchValue . '%')->get()->toArray();
 
-        if (count($res)) {
-            return $this->create($res, "数据请求成功", 200);
+
+        if (count($works) || count($coms)) {
+            return $this->create(array("works"=>$works, "coms"=>$coms), "数据请求成功", 200);
         } else {
             return $this->create([], "无数据", 204);
         }
