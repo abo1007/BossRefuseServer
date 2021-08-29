@@ -49,11 +49,15 @@
                     <i class="layui-icon layui-icon-layouts"></i>
                     <p>广告管理</p>
                 </div>
-                <div class="item item5" onclick="goHref('more')">
+                <div class="item item5" onclick="goHref('activity')">
+                    <i class="layui-icon layui-icon-gift"></i>
+                    <p>活动管理</p>
+                </div>
+                <div class="item item6" onclick="goHref('more')">
                     <i class="layui-icon layui-icon-set"></i>
                     <p>更多管理</p>
                 </div>
-                <div class="item item6" onclick="goHref('about')">
+                <div class="item item7" onclick="goHref('about')">
                     <i class="layui-icon layui-icon-more"></i>
                     <p>关于系统</p>
                 </div>

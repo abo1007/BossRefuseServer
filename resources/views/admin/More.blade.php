@@ -2,7 +2,7 @@
 
 @section("content")
     <style>
-        .item5{
+        .item6{
             background-color: rgba(0,0,0,.3);
         }
     </style>

@@ -30,6 +30,8 @@ Route::get('admin/user', "Admin\IndexController@getView3");
 Route::get('admin/advert', "Admin\AdvertController@getView");
 Route::get('admin/more', "Admin\IndexController@getView5");
 Route::get('admin/about', "Admin\IndexController@getView6");
+Route::get('admin/activity', "Admin\IndexController@getView7");
+
 
 Route::get('admin/recruit/toshow/{id}', "Admin\RecruitController@toShow");
 Route::get('admin/recruit/noshow/{id}', "Admin\RecruitController@noShow");

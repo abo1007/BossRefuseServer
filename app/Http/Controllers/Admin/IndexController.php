@@ -50,4 +50,8 @@ class IndexController extends \App\Http\Controllers\Controller
     {
         return view('admin.About');
     }
+    public function getView7()
+    {
+        return view('admin.activity');
+    }
 }
