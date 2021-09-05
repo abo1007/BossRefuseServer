@@ -4,6 +4,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\api\Activity;
 use App\api\Cominfo;
 use App\api\User;
 use App\api\Workface;
@@ -52,6 +53,7 @@ class IndexController extends \App\Http\Controllers\Controller
     }
     public function getView7()
     {
-        return view('admin.activity');
+        $res = Activity::get();
+        return view('admin.activity', ["acts"=>$res]);
     }
 }

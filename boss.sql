@@ -11,11 +11,29 @@
  Target Server Version : 100126
  File Encoding         : 65001
 
- Date: 08/08/2021 22:36:15
+ Date: 29/08/2021 19:51:42
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for boss_activity
+-- ----------------------------
+DROP TABLE IF EXISTS `boss_activity`;
+CREATE TABLE `boss_activity`  (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `desc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `imgurls` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NULL DEFAULT NULL,
+  `state` int(1) NOT NULL COMMENT '1展示2下架',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_bin ROW_FORMAT = Compact;
+
+-- ----------------------------
+-- Records of boss_activity
+-- ----------------------------
+INSERT INTO `boss_activity` VALUES (1, '大城小爱', '这里空空的什么都没有', NULL, 1);
 
 -- ----------------------------
 -- Table structure for boss_advert
