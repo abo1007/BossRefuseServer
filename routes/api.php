@@ -30,6 +30,9 @@ Route::get('workface/com/{comid}','WorkfaceController@comShow') -> name('workfac
 Route::get('workface/search/{searchValue}','WorkfaceController@searchTitle') -> name('workface.search');
 
 
+// 发送验证码
+Route::get('user/getcode','UserController@getCode');
+
 Route::apiResource("user",'UserController');
 // 登录验证
 Route::post('user/login','UserController@login') -> name('user.login');
@@ -41,6 +44,7 @@ Route::post('user/updatepass','UserController@updatePass') -> name('user.updatep
 Route::post('user/reguser','UserController@registerUser') -> name('user.reguser');
 // 获得昵称
 Route::get('user/getnickname/{id}','UserController@nickname') -> name('user.nickname');
+
 
 
 Route::apiResource('offer','OfferController');

@@ -18,11 +18,6 @@
       </list>
     </option>
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>AppServiceProvider</find>
-    </findStrings>
-  </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/sebastian/version" />
@@ -118,6 +113,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql&#10;mariadb" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -283,7 +279,12 @@
       <workItem from="1626594245612" duration="2492000" />
       <workItem from="1627785769951" duration="2503000" />
       <workItem from="1628311319178" duration="5765000" />
-      <workItem from="1628996734140" duration="787000" />
+      <workItem from="1628996734140" duration="1386000" />
+      <workItem from="1630232840519" duration="4755000" />
+      <workItem from="1631450197476" duration="1001000" />
+      <workItem from="1632023871499" duration="1969000" />
+      <workItem from="1632119363979" duration="641000" />
+      <workItem from="1632402746652" duration="3077000" />
     </task>
     <servers />
   </component>
@@ -291,25 +292,25 @@
     <option name="version" value="2" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1622378156236">
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1632405094529">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="275" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622378156236" />
-    <state x="1246" y="191" width="463" height="552" key="NewPhpClassDialog" timestamp="1627785980438">
+    <state x="552" y="178" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1632405094529" />
+    <state width="220" height="477" key="HiddenNamespacesPopup" timestamp="1632405107202">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1246" y="191" width="463" height="552" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1627785980438" />
-    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1626595182960">
+    <state width="220" height="477" key="HiddenNamespacesPopup/0.0.1920.1040@0.0.1920.1040" timestamp="1632405107202" />
+    <state x="453" y="241" width="463" height="552" key="NewPhpClassDialog" timestamp="1630237118646">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1626595182960" />
-    <state x="681" y="162" key="SettingsEditor" timestamp="1623677484155">
+    <state x="453" y="241" width="463" height="552" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1630237118646" />
+    <state x="776" y="443" key="NewPhpFileDialog" timestamp="1630235603938">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="681" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1623677484155" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1622810938810">
+    <state x="776" y="443" key="NewPhpFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1630235603938" />
+    <state x="660" y="254" width="599" height="532" key="find.popup" timestamp="1632404074588">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622810938810" />
+    <state x="660" y="254" width="599" height="532" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1632404074588" />
   </component>
 </project>

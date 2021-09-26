@@ -174,8 +174,17 @@ class UserController extends BaseController
      */
     public function updatePass(Request $req)
     {
+        $data = $req->all();
 
-        return $this->create([], "未开放此API", 400);
+        $res = User::where('id',$data['id'])->update(array('password'=>md5($data['password'])));
+
+        if($res){
+            return $this->create([], "修改成功", 200);
+        }else{
+            return $this->create([], "修改失败", 400);
+
+        }
+//        return $this->create([], "未开放此API", 400);
 
     }
 
@@ -195,6 +204,36 @@ class UserController extends BaseController
     public function getsha()
     {
         return Str::random(60);
+    }
+
+    /**
+     * 发送验证码
+     */
+    public function getCode()
+    {
+        $codes = $this->make_password();
+        return $this->create($codes,"发送成功",200);
+    }
+
+    /**
+     * 验证码生成（不对外）
+     * @param int $length
+     * @return string
+     */
+    private function make_password($length = 6)
+    {
+        // 密码字符集，可任意添加你需要的字符
+        $chars = array('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
+        // 在 $chars 中随机取 $length 个数组元素键名
+        $keys = array_rand($chars, $length);
+
+        $password = '';
+        for($i = 0; $i < $length; $i++)
+        {
+            // 将 $length 个数组元素连接成字符串
+            $password .= $chars[$keys[$i]];
+        }
+        return $password;
     }
 
 
