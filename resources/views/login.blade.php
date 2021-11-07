@@ -28,8 +28,16 @@
             display: flex;
             justify-content: center;
         }
+        .top h1{
+            font-weight: 200;
+            color: #ffffff;
+        }
         .content{
             padding:10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
         }
         .bottom{
             padding:30px 0;
@@ -42,20 +50,20 @@
     <div id="app">
         <div class="login">
             <div class="top">
-                <h1>boss直拒 管理端</h1>
+                <h1>boss直拒 管理后台</h1>
             </div>
             <div class="content">
                 <label class="layui-form-label">用户名</label>
-                <div class="layui-input-block">
-                    <input type="text" name="title" required
+                <div class="layui-input-block" style="width: 80%;margin-left: 10px;">
+                    <input type="text" name="title" required maxlength="16" id="username"
                            lay-verify="required" placeholder="请输入用户名"
                            autocomplete="off" class="layui-input opt">
                 </div>
             </div>
             <div class="content">
                 <label class="layui-form-label">密码</label>
-                <div class="layui-input-block">
-                    <input type="password" name="title" required
+                <div class="layui-input-block" style="width: 80%;margin-left: 10px;">
+                    <input type="password" name="title" required maxlength="22" id="password"
                            lay-verify="required" placeholder="请输入密码"
                            autocomplete="off" class="layui-input opt">
                 </div>
@@ -65,9 +73,32 @@
             </div>
         </div>
     </div>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{asset("layui/layui.js")}}"></script>
     <script>
+        let layer;
+        layui.use('layer', function(){
+            layer = layui.layer;
+
+        });
         function login() {
-            location.href = '{{url("admin")}}';
+            let username = jQuery('#username').val();
+            let password = jQuery('#password').val();
+
+
+            console.log("{{\Illuminate\Support\Facades\URL::asset('admin/login')}}")
+            axios.post("{{\Illuminate\Support\Facades\URL::asset('admin/login')}}",{username,password}).then(res => {
+                console.log(res)
+                if(res.data.code == 200){
+                    location.href = '{{url("admin")}}';
+                }else{
+                    layer.open({
+                        title: '登录'
+                        ,content: '账户密码不匹配'
+                    });
+                }
+            })
+            {{--location.href = '{{url("admin")}}';--}}
         }
     </script>
 </body>

@@ -27,4 +27,14 @@ class UserController extends \App\Http\Controllers\BaseController
 
         }
     }
+
+    public function login(Request $request){
+        $data = $request->all();
+        if($data['username']=='yangbo' && strlen($data['password']) >= 6){
+            return $this->create(true,"ok",200);
+        }else{
+            return $this->create(false,"none",400);
+        }
+
+    }
 }

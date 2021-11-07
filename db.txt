@@ -1,0 +1,5 @@
+DB_HOST=123.57.181.91
+DB_PORT=3306
+DB_DATABASE=bo_ezrayes_com
+DB_USERNAME=bo_ezrayes_com
+DB_PASSWORD=yangbo

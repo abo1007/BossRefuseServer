@@ -18,6 +18,8 @@ Route::get('/', function () {
 Route::get('login', function () {
     return view('login');
 });
+Route::post('admin/login', "Admin\UserController@login");
+
 
 //Route::get('main', function () {
 //    return view('admin.main');
